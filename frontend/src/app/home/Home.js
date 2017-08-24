@@ -1,5 +1,6 @@
 import React from 'react';
 import HomeNavbar from './components/HomeNavbar';
+import HeroGrid from './components/HeroGrid';
 
 class Home extends React.Component {
   render() {
@@ -16,6 +17,7 @@ class Home extends React.Component {
         <p className="Home-intro">
           I hope to release this ASAP.
         </p>
+	<HeroGrid/>
       </div>
     );
   }
