@@ -1,0 +1,22 @@
+.HeroGrid-hero {
+	position: relative;
+	-moz-transition: opacity .3s linear;
+	-webkit-transition: opacity .3s linear;
+	-ms-transition: opacity .3s linear;
+	-o-transition: opacity .3s linear;
+	transition: opacity .3s linear; 
+}
+
+
+.HeroGrid-wrapper{
+	overflow: hidden;
+	background: rgba(0, 0, 0, 1);  
+}
+
+.HeroGrid-hero:hover {
+	opacity: 0.5;
+	cursor: pointer;
+}
+
+
+
