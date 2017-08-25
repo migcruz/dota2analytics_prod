@@ -9,7 +9,7 @@ class Home extends React.Component {
       <div className="Home">
 	<HomeNavbar/>
         <div className="Home-header">
-          <img src={`${staticRoot}adminlte/img/logo.svg`} className="Home-logo" alt="logo" />
+          <img src={`${staticRoot}dota2assets/img/dota2logo.png`} className="Home-logo" alt="logo" />
           <h2 className="heading">
 	    Dota 2 Analytics Under construction -Miguel
 	  </h2>
