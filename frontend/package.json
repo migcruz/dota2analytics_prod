@@ -12,6 +12,7 @@
   "author": "Your Name",
   "license": "MIT",
   "devDependencies": {
+    "axios": "^0.16.2",
     "babel-core": "^6.7.4",
     "babel-eslint": "^5.0.0",
     "babel-loader": "^6.2.4",
@@ -32,6 +33,7 @@
     "gulp": "^3.9.1",
     "gulp-cli": "^1.4.0",
     "gulp-util": "^3.0.8",
+    "json-loader": "^0.5.7",
     "less": "^2.6.0",
     "less-loader": "^2.2.2",
     "rimraf": "^2.4.3",
