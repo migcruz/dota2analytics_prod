@@ -36,3 +36,12 @@ def index(request):
     # return render(request, template, context)
     #return render(request, 'backend/app.html')
     #return redirect(reverse("app"))
+
+@login_required
+def app2(request):
+    context = {
+        'permissions': json.dumps(list(request.user.get_all_permissions()))
+    }
+
+    template = 'backend/index.html'
+    return render(request, template, context)

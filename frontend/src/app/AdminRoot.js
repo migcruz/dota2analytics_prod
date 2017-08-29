@@ -1,27 +1,25 @@
 import React from "react";
 import {Provider} from "react-redux";
-import {BrowserRouter, Route} from "react-router-dom";
+import {Router} from "react-router";
 
 import stylesheets from "app/stylesheets/index.less"; //eslint-disable-line no-unused-vars
 import configureStore from "app/configureStore";
 import history from "app/history";
-import urls from "app/urls";
+import adminurls from "app/adminurls";
 
 const store = configureStore();
 
 
-class Root extends React.Component {
+class AdminRoot extends React.Component {
     render() {
         return (
             <Provider store={store}>
-                <BrowserRouter>
-                    <div>
-                    	{urls}
-                    </div>
-                </BrowserRouter>
+                <Router history={history}>
+                    {adminurls}
+                </Router>
             </Provider>
         );
     }
 }
 
-export default Root;
+export default AdminRoot;
