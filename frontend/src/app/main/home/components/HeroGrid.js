@@ -129,38 +129,7 @@ const hero_icon_paths = [
 ];
 
 
-var row = [];
-var row_list = [];
-var j = 0;
-for (var i = 0; i < hero_icon_paths.length; i++){
-    if (j > 14){
-        row_list.push(row);
-        row = [];
-        j = 0;
-    }       
-    row.push(
-        <Grid.Column>
-            <div className="HeroGrid-wrapper">
-                <div className="HeroGrid-lol">
-                    <h5>{hero_icon_paths[i].key}</h5>
-                </div>
-                <div className="HeroGrid-hero">
-                    <Image src={hero_icon_paths[i].value}/>
-                </div>
-            </div>
-        </Grid.Column>
-    );
-    j++;
-}
-row_list.push(row);
-var rows = [];
-for (var i = 0; i < row_list.length; i++){
-    rows.push(
-        <Grid.Row columns={15} centered>
-            {row_list[i]}
-        </Grid.Row>
-    );
-}
+
 
 
 class HeroGrid extends React.Component {
@@ -173,7 +142,40 @@ class HeroGrid extends React.Component {
     }
 
 
-	render() {		
+	render() {
+        {/* Forms the hero grid */}
+        var row = [];
+        var row_list = [];
+        var j = 0;
+        for (var i = 1; i < hero_icon_paths.length; i++){
+            if (j > 14){
+                row_list.push(row);
+                row = [];
+                j = 0;
+            }       
+            row.push(
+                <Grid.Column>
+                    <div className="HeroGrid-wrapper">
+                        <div className="HeroGrid-lol">
+                            <h5>{hero_icon_paths[i].key}</h5>
+                        </div>
+                        <div className="HeroGrid-hero">
+                            <Image a href="/app/admin" src={hero_icon_paths[i].value}/>
+                        </div>
+                    </div>
+                </Grid.Column>
+            );
+            j++;
+        }
+        row_list.push(row);
+        var rows = [];
+        for (var i = 0; i < row_list.length; i++){
+            rows.push(
+                <Grid.Row columns={15} centered>
+                    {row_list[i]}
+                </Grid.Row>
+            );
+        }		
     	return (
 			<Grid>
 		  		{rows}
