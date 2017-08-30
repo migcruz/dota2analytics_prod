@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-
-import { ReactCSSTransitionGroup } from 'react-transition-group';
+import { CSSTransitionGroup } from 'react-transition-group';
 
 class FetchDemo extends React.Component {
   constructor(props) {
@@ -23,12 +22,12 @@ class FetchDemo extends React.Component {
 
   render() {
     return (
-      <ReactCSSTransitionGroup
-      transitionName="example"
-      transitionAppear={true}
-      transitionAppearTimeout={500}
-      transitionEnter={false}
-      transitionLeave={false}>
+      <CSSTransitionGroup
+        transitionName="example"
+        transitionAppear={true}
+        transitionAppearTimeout={500}
+        transitionEnter={false}
+        transitionLeave={false}>
         <div>
           <h1>{`/r/reactjs`}</h1>
           <ul>
@@ -37,7 +36,7 @@ class FetchDemo extends React.Component {
             )}
           </ul>
         </div>
-      </ReactCSSTransitionGroup>
+      </CSSTransitionGroup>
     );
   }
 }

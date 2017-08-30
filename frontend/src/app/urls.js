@@ -11,6 +11,7 @@ const urls = (
 	<Switch>
 		<Route exact path="/app" component={Home}/>
 		<Route exact path="/app/lol" component={HoverableComponent}/>
+		<Route exact path="/app/kek" component={FetchDemo}/>
 	</Switch>
 
 );
