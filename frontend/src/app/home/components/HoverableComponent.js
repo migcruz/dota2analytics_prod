@@ -1,27 +1,18 @@
 import React from 'react';
-
+import { ReactCSSTransitionGroup } from 'react-transition-group';
 
 class HoverableComponent extends React.Component {
-    constructor() {
-      	super();
-      	this.state = { text : '' }
-    }
-    //set the text
-    onMouseover (e) {
-      	this.setState({text : 'some text'})
-    }
-    //clear the text
-    onMouseout (e) {
-      	this.setState({text : 'LOL'})
-    }
     render () {
-       const {text} = this.state;
-       return (
-        	<div 
-           		onMouseEnter={this.onMouseover.bind(this)}
-           		onMouseLeave={this.onMouseout.bind(this)}>{text}
-			</div>
-       )
+        return (
+        	 <ReactCSSTransitionGroup
+                transitionName="example"
+                transitionAppear={true}
+                transitionAppearTimeout={500}
+                transitionEnter={false}
+                transitionLeave={false}>
+                <h1>FADING</h1>
+            </ReactCSSTransitionGroup>
+       );
     }
 }
 

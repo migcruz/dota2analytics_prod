@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
+import { ReactCSSTransitionGroup } from 'react-transition-group';
+
 class FetchDemo extends React.Component {
   constructor(props) {
     super(props);
@@ -21,14 +23,21 @@ class FetchDemo extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>{`/r/reactjs`}</h1>
-        <ul>
-          {this.state.posts.map(post =>
-            <li key={post.id}>{post.title}</li>
-          )}
-        </ul>
-      </div>
+      <ReactCSSTransitionGroup
+      transitionName="example"
+      transitionAppear={true}
+      transitionAppearTimeout={500}
+      transitionEnter={false}
+      transitionLeave={false}>
+        <div>
+          <h1>{`/r/reactjs`}</h1>
+          <ul>
+            {this.state.posts.map(post =>
+              <li key={post.id}>{post.title}</li>
+            )}
+          </ul>
+        </div>
+      </ReactCSSTransitionGroup>
     );
   }
 }

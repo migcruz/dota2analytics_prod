@@ -1,7 +1,7 @@
 import React from 'react';
 import HomeNavbar from './components/HomeNavbar';
 import HeroGrid from './components/HeroGrid';
-import FetchDemo from './components/HeroGrid';
+import FetchDemo from './components/FetchDemo';
 
 class Home extends React.Component {
   	render() {

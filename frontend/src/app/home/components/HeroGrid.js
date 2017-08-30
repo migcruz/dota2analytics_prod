@@ -139,7 +139,7 @@ for (var i = 0; i < hero_icon_paths.length; i++){
         j = 0;
     }       
     row.push(
-        <Grid.Column>
+        <Grid.Column key={hero_icon_paths[i].key}>
             <div className="HeroGrid-wrapper">
                 <div className="HeroGrid-lol">
                     <h5>{hero_icon_paths[i].key}</h5>
@@ -153,10 +153,11 @@ for (var i = 0; i < hero_icon_paths.length; i++){
     j++;
 }
 row_list.push(row);
+
 var rows = [];
 for (var i = 0; i < row_list.length; i++){
     rows.push(
-        <Grid.Row columns={15} centered>
+        <Grid.Row columns={15} key={i.toString()} centered>
             {row_list[i]}
         </Grid.Row>
     );
