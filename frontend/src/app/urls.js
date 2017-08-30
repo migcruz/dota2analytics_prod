@@ -6,13 +6,26 @@ import RouteNotFound from "app/components/RouteNotFound";
 import Home from "app/home/Home"
 import FetchDemo from "app/home/components/FetchDemo";
 import HoverableComponent from "app/home/components/HoverableComponent";
+import HomeNavbar from "app/home/components/HomeNavbar";
 
 const urls = (
-	<Switch>
-		<Route exact path="/app" component={Home}/>
-		<Route exact path="/app/lol" component={HoverableComponent}/>
-		<Route exact path="/app/kek" component={FetchDemo}/>
-	</Switch>
+	<Route render={({ location, history, match }) => (
+		<div>
+			<HomeNavbar/>
+			<CSSTransitionGroup
+				transitionName="example"
+				transitionEnterTimeout={500}
+				transitionLeaveTimeout={500}>
+				<div key={location.pathname}>
+					<Switch location={location}>
+						<Route exact path="/app" component={Home}/>
+						<Route path="/app/lol" component={HoverableComponent}/>
+						<Route path="/app/kek" component={FetchDemo}/>
+					</Switch>
+				</div>
+			</CSSTransitionGroup>
+		</div>
+    )}/>
 
 );
 
@@ -33,4 +46,24 @@ export default urls;
 				</Switch>
 			</CSSTransitionGroup>
 		</div>
-    )}/> */}
+	)}/> */}
+	
+{/* <Switch>
+		<Route exact path="/app" component={Home}/>
+		<Route exact path="/app/lol" component={HoverableComponent}/>
+		<Route exact path="/app/kek" component={FetchDemo}/>
+	</Switch>
+
+https://github.com/marnusw/react-css-transition-replace
+*/}
+
+
+	{/*<CSSTransitionGroup
+	transitionName="example"
+	transitionAppear={true}
+	transitionAppearTimeout={500}
+	transitionEnter={true}
+	transitionLeave={true}
+	transitionEnterTimeout={500}
+	transitionLeaveTimeout={300}>
+	<div key={location.pathname}>*/}
