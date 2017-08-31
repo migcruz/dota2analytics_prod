@@ -1,18 +1,65 @@
 import React from 'react';
-import {Navbar, Nav, NavItem, NavDropdown, MenuItem} from "react-bootstrap";
+import { Menu } from 'semantic-ui-react'
+import {NavLink} from "react-router-dom";
+
 
 class HomeNavbar extends React.Component {
+	state = {}
+
+  	handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+
   	render() {
+  		const { activeItem } = this.state
     	return (
-			<Navbar>
+			<Menu>
+		        <Menu.Item
+		          	name='editorials'
+		          	active={activeItem === 'editorials'}
+		          	onClick={this.handleItemClick}
+		          	as={NavLink}
+		          	to="/app"
+		        >
+		          	Home
+		        </Menu.Item>
+
+		        <Menu.Item
+		          	name='reviews'
+		          	active={activeItem === 'reviews'}
+		          	onClick={this.handleItemClick}
+		          	as={NavLink}
+		          	to="/app/kek"
+		        >
+		          	Kek
+		        </Menu.Item>
+
+		        <Menu.Item
+		          	name='upcomingEvents'
+		          	active={activeItem === 'upcomingEvents'}
+		          	onClick={this.handleItemClick}
+		          	as={NavLink}
+		          	to="/app/lol"
+		        >
+		          	Lol
+		        </Menu.Item>
+	      </Menu>
+    	);
+ 	}
+}
+
+export default HomeNavbar;
+
+
+
+{/* see react-router-bootstrap
+<Navbar>
 				<Navbar.Header>
 				<Navbar.Brand>
-					<a href="/app/home">Dota 2 Analytics</a>
+					<Link to="/app">Dota 2 Analytics</Link>
 				</Navbar.Brand>
 				</Navbar.Header>
 				<Nav>
-				<NavItem eventKey={1} href="/app/admin">Admin</NavItem>
-				<NavItem eventKey={2} href="#">Link</NavItem>
+				<Link to="/app/lol"><NavItem eventKey={1}>Lol</NavItem></Link>
+				<Link to="/app/kek"><NavItem eventKey={2}>Kek</NavItem></Link>
 				<NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
 					<MenuItem eventKey={3.1}>Action</MenuItem>
 					<MenuItem eventKey={3.2}>Another action</MenuItem>
@@ -22,8 +69,4 @@ class HomeNavbar extends React.Component {
 				</NavDropdown>
 				</Nav>
 			</Navbar>
-    	);
- 	}
-}
-
-export default HomeNavbar;
+			*/}

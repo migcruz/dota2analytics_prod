@@ -1,8 +1,6 @@
 import React from 'react';
-import HomeNavbar from './components/HomeNavbar';
 import HeroGrid from './components/HeroGrid';
-import FetchDemo from './components/FetchDemo';
-import { CSSTransitionGroup } from 'react-transition-group';
+
 
 class Home extends React.Component {
   	render() {
@@ -10,7 +8,6 @@ class Home extends React.Component {
     	return (
 
 			<div className="Home">
-				<HomeNavbar/>
 				<div className="Home-header">
 					<img src={`${staticRoot}dota2assets/img/dota2logo.png`} className="Home-logo" alt="logo" />
 					<h2 className="heading">

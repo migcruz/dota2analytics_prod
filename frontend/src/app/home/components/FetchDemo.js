@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import { CSSTransitionGroup } from 'react-transition-group';
+
 
 class FetchDemo extends React.Component {
   constructor(props) {

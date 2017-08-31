@@ -1,6 +1,6 @@
 import React from "react";
 import {Grid, Image, Label} from "semantic-ui-react";
-import HoverableComponent from "./HoverableComponent";
+
 
 {/*import axios from "axios";
 const API_HOST = "http://cdn.dota2.com";
