@@ -14,9 +14,8 @@ class HeroPage extends React.Component {
     	return (
 
 			<div>
-				<h1> LOL </h1>
-				<div>
-					<HeroCard name={this.hero_name}/>
+				<div className="HeroPage-header">					
+					<HeroCard name={this.hero_name}/>					
 				</div>
 				<h1> LOL </h1>
 			</div>

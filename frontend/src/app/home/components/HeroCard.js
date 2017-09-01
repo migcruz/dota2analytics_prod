@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, Image, Icon } from 'semantic-ui-react'
 import {NavLink} from "react-router-dom";
 
+const src = "http://cdn.dota2.com/apps/dota2/images/heroes/queenofpain_vert.jpg";
 
 class HeroCard extends React.Component {
 	constructor(props) {
@@ -17,6 +18,17 @@ class HeroCard extends React.Component {
         const staticRoot = window.django.urls.staticRoot;		
     	return (
             <div className="HeroCard-card">
+                <Card color="blue" image={src} centered/>
+            </div>
+    	);
+  	}
+}
+
+export default HeroCard;
+
+{/* https://www.reddit.com/r/DotA2/comments/27d6vl/dota_2_animated_hero_portraits/ 
+
+<div className="HeroCard-card">
                 <Card color="blue" centered>
                     <div className="HeroCard-avatar">
                         <Image src="http://cdn.dota2.com/apps/dota2/images/heroes/queenofpain_vert.jpg" centered/>
@@ -33,11 +45,5 @@ class HeroCard extends React.Component {
                         </a>
                     </Card.Content>
                 </Card>
-            </div>
-    	);
-  	}
-}
-
-export default HeroCard;
-
-{/* https://www.reddit.com/r/DotA2/comments/27d6vl/dota_2_animated_hero_portraits/ */}
+            </div>  
+        */}
