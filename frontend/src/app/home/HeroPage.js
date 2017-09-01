@@ -1,29 +1,28 @@
 import React from 'react';
-import HeroGrid from './components/HeroGrid';
+import HeroCard from './components/HeroCard';
 
 
-class Home extends React.Component {
+class HeroPage extends React.Component {
+
+	constructor(props) {
+        super(props);
+        this.hero_name = this.props.match.params.hero;
+	}
+	
   	render() {
 		const staticRoot = window.django.urls.staticRoot;
     	return (
 
-			<div className="Home">
-				<div className="Home-header">
-					<img src={`${staticRoot}dota2assets/img/dota2logo.png`} className="Home-logo" alt="logo" />
-					<h2 className="heading">
-						Dota 2 Analytics Under construction -Miguel
-					</h2>
+			<div>
+				<h1> LOL </h1>
+				<div>
+					<HeroCard name={this.hero_name}/>
 				</div>
-				<p className="Home-intro">
-					I hope to release this ASAP.
-				</p>
-				<div className="Home-grid">
-					<HeroGrid/>
-				</div>
+				<h1> LOL </h1>
 			</div>
             
     	);
   	}
 }
 
-export default Home;
+export default HeroPage;

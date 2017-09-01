@@ -1,6 +1,6 @@
 import React from "react";
 import {Grid, Image, Label} from "semantic-ui-react";
-
+import {NavLink} from "react-router-dom";
 
 {/*import axios from "axios";
 const API_HOST = "http://cdn.dota2.com";
@@ -129,55 +129,55 @@ const hero_icon_paths = [
 ];
 
 
-var row = [];
-var row_list = [];
-var j = 0;
-for (var i = 0; i < hero_icon_paths.length; i++){
-    if (j > 14){
-        row_list.push(row);
-        row = [];
-        j = 0;
-    }       
-    row.push(
-        <Grid.Column key={hero_icon_paths[i].key}>
-            <div className="HeroGrid-wrapper">
-                <div className="HeroGrid-lol">
-                    <h5>{hero_icon_paths[i].key}</h5>
-                </div>
-                <div className="HeroGrid-hero">
-                    <Image src={hero_icon_paths[i].value}/>
-                </div>
-            </div>
-        </Grid.Column>
-    );
-    j++;
-}
-row_list.push(row);
 
-var rows = [];
-for (var i = 0; i < row_list.length; i++){
-    rows.push(
-        <Grid.Row columns={15} key={i.toString()} centered>
-            {row_list[i]}
-        </Grid.Row>
-    );
-}
 
 
 class HeroGrid extends React.Component {
     constructor(props) {
         super(props);
+        this.rows = [];
     }
 
-    componentDidMount() {
+    componentWillMount() { 
+        var row = [];
+        var row_list = [];
+        var j = 0;
+        for (var i = 0; i < hero_icon_paths.length; i++){
+            if (j > 14){
+                row_list.push(row);
+                row = [];
+                j = 0;
+            }       
+            row.push(
+                <Grid.Column key={hero_icon_paths[i].key}>
+                    <div className="HeroGrid-wrapper">
+                        <div className="HeroGrid-name">
+                            <h5>{hero_icon_paths[i].key}</h5>
+                        </div>
+                        <div className="HeroGrid-hero">
+                            <Image src={hero_icon_paths[i].value} as={NavLink} to={"/app/"+hero_icon_paths[i].key}/>
+                        </div>
+                    </div>
+                </Grid.Column>
+            );
+            j++;
+        }
+        row_list.push(row);
 
+        for (var i = 0; i < row_list.length; i++){
+            this.rows.push(
+                <Grid.Row columns={15} key={i.toString()} centered>
+                    {row_list[i]}
+                </Grid.Row>
+            );
+        }
     }
 
 
 	render() {		
     	return (
 			<Grid>
-		  		{rows}
+		  		{this.rows}
 			</Grid>
     	);
   	}

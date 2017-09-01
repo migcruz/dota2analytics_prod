@@ -13,22 +13,27 @@ class HeroCard extends React.Component {
     }
 
 
-	render() {		
+	render() {
+        const staticRoot = window.django.urls.staticRoot;		
     	return (
-			<Card>
-                <Image src='/assets/images/avatar/large/daniel.jpg' />
-                <Card.Content>
-                <Card.Header>Daniel</Card.Header>
-                <Card.Meta>Joined in 2016</Card.Meta>
-                <Card.Description>Daniel is a comedian living in Nashville.</Card.Description>
-                </Card.Content>
-                <Card.Content extra>
-                <a>
-                    <Icon name='user' />
-                    10 Friends
-                </a>
-                </Card.Content>
-            </Card>
+            <div className="HeroCard-card">
+                <Card color="blue" centered>
+                    <div className="HeroCard-avatar">
+                        <Image src="http://cdn.dota2.com/apps/dota2/images/heroes/queenofpain_vert.jpg" centered/>
+                    </div>
+                    <Card.Content>
+                        <Card.Header>{this.props.name}</Card.Header>
+                        <Card.Meta>Joined in 2016</Card.Meta>
+                        <Card.Description>Daniel is a comedian living in Nashville.</Card.Description>
+                    </Card.Content>
+                    <Card.Content extra>
+                        <a>
+                            <Icon name='user' />
+                            10 Friends
+                        </a>
+                    </Card.Content>
+                </Card>
+            </div>
     	);
   	}
 }

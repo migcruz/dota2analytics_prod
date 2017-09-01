@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu } from 'semantic-ui-react'
+import { Menu } from 'semantic-ui-react';
 import {NavLink} from "react-router-dom";
 
 
@@ -9,7 +9,7 @@ class HomeNavbar extends React.Component {
   	handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
   	render() {
-  		const { activeItem } = this.state
+  		const { activeItem } = this.state;
     	return (
 			<Menu>
 		        <Menu.Item
