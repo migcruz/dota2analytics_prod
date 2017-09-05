@@ -131,10 +131,16 @@ class HeroPage extends React.Component {
 		const staticRoot = window.django.urls.staticRoot;
     	return (
 
-			<div>
-				<video autoPlay loop preload>
-  					<source src={this.portrait_path} type="video/webm"/>
-				</video>				
+			<div style={{paddingTop: '40px'}}>
+				<div className="HeroPage-header">
+					<div style={{textAlign: 'center'}}>
+						<h1>{this.hero_name}</h1>
+						<video autoPlay loop preload>
+		  					<source src={this.portrait_path} type="video/webm"/>
+						</video>
+					</div>
+				</div>
+				<div className="HeroPage-strip_agi"/>					
 				<h1> LOL </h1>
 			</div>
             

@@ -15,7 +15,7 @@ class Root extends React.Component {
         return (
             <Provider store={store}>
                 <BrowserRouter>
-                	<div>
+                	<div className="Home-background">
                 		<HomeNavbar/>
                 		{urls}
                 	</div>

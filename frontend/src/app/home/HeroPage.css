@@ -3,4 +3,66 @@
     height: 500px;
     padding: 20px;
     color: white;
-  }
+ 	}
+
+.HeroPage-header {
+	height: 400px;
+
+	background:
+		-webkit-linear-gradient(45deg, hsla(37, 3%, 31%, 1) 0%, hsla(37, 3%, 31%, 0) 70%),
+		-webkit-linear-gradient(315deg, hsla(55, 4%, 36%, 1) 10%, hsla(55, 4%, 36%, 0) 80%),
+		-webkit-linear-gradient(225deg, hsla(83, 0%, 33%, 1) 10%, hsla(83, 0%, 33%, 0) 80%),
+		-webkit-linear-gradient(135deg, hsla(248, 12%, 27%, 1) 100%, hsla(248, 12%, 27%, 0) 70%);
+	background:
+		linear-gradient(45deg, hsla(37, 3%, 31%, 1) 0%, hsla(37, 3%, 31%, 0) 70%),
+		linear-gradient(135deg, hsla(55, 4%, 36%, 1) 10%, hsla(55, 4%, 36%, 0) 80%),
+		linear-gradient(225deg, hsla(83, 0%, 33%, 1) 10%, hsla(83, 0%, 33%, 0) 80%),
+		linear-gradient(315deg, hsla(248, 12%, 27%, 1) 100%, hsla(248, 12%, 27%, 0) 70%);
+	}
+
+
+.HeroPage-strip_str {
+	height: 5px;
+
+	background:
+		-webkit-linear-gradient(45deg, hsla(8, 100%, 31%, 1) 0%, hsla(8, 100%, 31%, 0) 70%),
+		-webkit-linear-gradient(315deg, hsla(32, 100%, 37%, 1) 10%, hsla(32, 100%, 37%, 0) 80%),
+		-webkit-linear-gradient(225deg, hsla(29, 100%, 65%, 1) 10%, hsla(29, 100%, 65%, 0) 80%),
+		-webkit-linear-gradient(135deg, hsla(341, 100%, 56%, 1) 100%, hsla(341, 100%, 56%, 0) 70%);
+	background:
+		linear-gradient(45deg, hsla(8, 100%, 31%, 1) 0%, hsla(8, 100%, 31%, 0) 70%),
+		linear-gradient(135deg, hsla(32, 100%, 37%, 1) 10%, hsla(32, 100%, 37%, 0) 80%),
+		linear-gradient(225deg, hsla(29, 100%, 65%, 1) 10%, hsla(29, 100%, 65%, 0) 80%),
+		linear-gradient(315deg, hsla(341, 100%, 56%, 1) 100%, hsla(341, 100%, 56%, 0) 70%);
+	}
+
+
+.HeroPage-strip_int {
+	height: 5px;
+
+	background:
+		-webkit-linear-gradient(45deg, hsla(231, 100%, 31%, 1) 0%, hsla(231, 100%, 31%, 0) 70%),
+		-webkit-linear-gradient(315deg, hsla(166, 100%, 37%, 1) 10%, hsla(166, 100%, 37%, 0) 80%),
+		-webkit-linear-gradient(225deg, hsla(180, 100%, 65%, 1) 10%, hsla(180, 100%, 65%, 0) 80%),
+		-webkit-linear-gradient(135deg, hsla(269, 100%, 56%, 1) 100%, hsla(269, 100%, 56%, 0) 70%);
+	background:
+		linear-gradient(45deg, hsla(231, 100%, 31%, 1) 0%, hsla(231, 100%, 31%, 0) 70%),
+		linear-gradient(135deg, hsla(166, 100%, 37%, 1) 10%, hsla(166, 100%, 37%, 0) 80%),
+		linear-gradient(225deg, hsla(180, 100%, 65%, 1) 10%, hsla(180, 100%, 65%, 0) 80%),
+		linear-gradient(315deg, hsla(269, 100%, 56%, 1) 100%, hsla(269, 100%, 56%, 0) 70%);
+	}
+
+.HeroPage-strip_agi {
+	height: 5px;
+
+	background:
+		-webkit-linear-gradient(45deg, hsla(114, 100%, 31%, 1) 0%, hsla(114, 100%, 31%, 0) 70%),
+		-webkit-linear-gradient(315deg, hsla(107, 100%, 37%, 1) 10%, hsla(107, 100%, 37%, 0) 80%),
+		-webkit-linear-gradient(225deg, hsla(128, 100%, 65%, 1) 10%, hsla(128, 100%, 65%, 0) 80%),
+		-webkit-linear-gradient(135deg, hsla(180, 100%, 56%, 1) 100%, hsla(180, 100%, 56%, 0) 70%);
+	background:
+		linear-gradient(45deg, hsla(114, 100%, 31%, 1) 0%, hsla(114, 100%, 31%, 0) 70%),
+		linear-gradient(135deg, hsla(107, 100%, 37%, 1) 10%, hsla(107, 100%, 37%, 0) 80%),
+		linear-gradient(225deg, hsla(128, 100%, 65%, 1) 10%, hsla(128, 100%, 65%, 0) 80%),
+		linear-gradient(315deg, hsla(180, 100%, 56%, 1) 100%, hsla(180, 100%, 56%, 0) 70%);
+	}

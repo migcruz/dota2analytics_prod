@@ -11,7 +11,7 @@ class HomeNavbar extends React.Component {
   	render() {
   		const { activeItem } = this.state;
     	return (
-			<Menu>
+			<Menu fixed={'top'} inverted>
 		        <Menu.Item
 		          	name='editorials'
 		          	active={activeItem === 'editorials'}

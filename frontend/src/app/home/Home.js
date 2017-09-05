@@ -6,7 +6,6 @@ class Home extends React.Component {
   	render() {
 		const staticRoot = window.django.urls.staticRoot;
     	return (
-
 			<div className="Home">
 				<div className="Home-header">
 					<img src={`${staticRoot}dota2assets/img/dota2logo.png`} className="Home-logo" alt="logo" />
@@ -21,7 +20,6 @@ class Home extends React.Component {
 					<HeroGrid/>
 				</div>
 			</div>
-            
     	);
   	}
 }
