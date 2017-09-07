@@ -1,5 +1,6 @@
 import React from 'react';
 import HeroCard from './components/HeroCard';
+import { Image } from "semantic-ui-react";
 
 
 const staticRoot = window.django.urls.staticRoot;
@@ -138,10 +139,23 @@ class HeroPage extends React.Component {
 						<video autoPlay loop preload>
 		  					<source src={this.portrait_path} type="video/webm"/>
 						</video>
+						<div style={{paddingTop: '10px'}}>
+							<div className="HeroPage-health_bar">
+								<h5>200</h5>
+							</div>
+							<div className="HeroPage-mana_bar">
+								<h5>200</h5>
+							</div>
+							<div style={{width: '234px', margin: '0 auto'}}>
+								<Image src={`${staticRoot}dota2assets/img/strength.png`} size="mini"/>
+								<Image src={`${staticRoot}dota2assets/img/agility.png`} size="mini"/>
+								<Image src={`${staticRoot}dota2assets/img/intelligence.png`} size="mini"/>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div className="HeroPage-strip_agi"/>					
-				<h1> LOL </h1>
+				<h1> LMAO </h1>
 			</div>
             
     	);
