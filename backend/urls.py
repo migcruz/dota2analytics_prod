@@ -6,7 +6,7 @@ from .views import app, index, home, app2
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^api/', include('users.urls')),
+    url(r'^api/', include('urls')),
     url(r'^app/', app, name='app'),
     url(r'^app2/', app2, name='app2'),
     url('^auth/login/$', login, name='login'),
