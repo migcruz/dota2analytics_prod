@@ -8,14 +8,15 @@ from django.contrib.postgres.fields import JSONField, ArrayField
 
 class Hero(models.Model):
 	hero_id = models.IntegerField(default=0)
-	npc_name = models.CharField(max_length=50, default="")
 	name = models.CharField(max_length=50, default="")
+	localized_name = models.CharField(max_length=50, default="")
 	primary_attr = models.CharField(max_length=3, default="")
 	attack_type = models.CharField(max_length=6, default="")
 	roles = ArrayField(models.CharField(max_length=12, default=""), default=list)
 	webm = models.CharField(max_length=100, default="")
 	img = models.CharField(max_length=100, default="")
 	icon = models.CharField(max_length=100, default="")
+	url = models.CharField(max_length=100, default="")
 	base_health = models.IntegerField(default=0)
 	base_health_regen = models.FloatField(default=0.0)
 	base_mana = models.IntegerField(default=0)
@@ -37,6 +38,9 @@ class Hero(models.Model):
 	turn_rate = models.FloatField(default=0.0)
 	cm_enabled = models.BooleanField(default=True)
 	legs = models.IntegerField(default=0)
+
+	def __unicode__(self):
+		return self.localized_name
 
 
 

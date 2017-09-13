@@ -16,6 +16,8 @@ class FetchDemo extends React.Component {
     axios.get(`http://www.reddit.com/r/reactjs.json`)
       .then(res => {
         const posts = res.data.data.children.map(obj => obj.data);
+        console.log("HELLO");
+        console.log(posts);
         this.setState({ posts });
       });
   }

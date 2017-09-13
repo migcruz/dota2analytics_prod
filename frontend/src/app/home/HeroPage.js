@@ -1,7 +1,7 @@
 import React from 'react';
 import HeroCard from './components/HeroCard';
 import { Image } from "semantic-ui-react";
-
+import axios from 'axios';
 
 const staticRoot = window.django.urls.staticRoot;
 const hero_portrait_paths = {
@@ -124,20 +124,31 @@ class HeroPage extends React.Component {
 
 	constructor(props) {
         super(props);
+        this.state = {hero_json: {}};
         this.hero_name = this.props.match.params.hero;
         this.portrait_path = hero_portrait_paths[this.hero_name];
-	}
+    }
+    
+    componentDidMount() {
+        axios.get(`http://127.0.0.1:8000/api/heroes/1/?format=json`)
+          .then(res => {
+            this.setState({hero_json: res.data});
+            this.portrait_path = `${staticRoot}${this.state.hero_json["webm"]}`;
+            console.log("HELLO");
+            console.log(this.portrait_path);
+        });
+    }
 	
   	render() {
-		const staticRoot = window.django.urls.staticRoot;
+        console.log("RENDER");
     	return (
 
 			<div style={{paddingTop: '40px'}}>
 				<div className="HeroPage-header">
 					<div style={{textAlign: 'center'}}>
-						<h1>{this.hero_name}</h1>
+						<h1>{this.state.hero_json["localized_name"]}</h1>
 						<video autoPlay loop preload>
-		  					<source src={this.portrait_path} type="video/webm"/>
+		  					<source src={`${staticRoot}${this.state.hero_json["webm"]}`} type="video/webm"/>
 						</video>
 						<div style={{paddingTop: '10px'}}>
 							<div className="HeroPage-health_bar">
@@ -175,4 +186,7 @@ export default HeroPage;
 
 {/*<Embed
     				url={`${staticRoot}dota2assets/npc_dota_hero_queenofpain.webm`}
-  				/>*/}
+                  />
+            
+    https://stackoverflow.com/questions/40351997/async-image-load-with-react-and-redux        
+                */}
