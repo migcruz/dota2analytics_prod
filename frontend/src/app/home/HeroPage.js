@@ -124,31 +124,33 @@ class HeroPage extends React.Component {
 
 	constructor(props) {
         super(props);
-        this.state = {hero_json: {}};
+        this.state = {hero_json: {},
+        			  portrait_path: `${staticRoot}dota2assets/webm/heroes/abaddon.webm`,
+        			  icon_png: `${staticRoot}dota2assets/img/heroes/abaddon.png`};
         this.hero_name = this.props.match.params.hero;
-        this.portrait_path = hero_portrait_paths[this.hero_name];
+
     }
     
     componentDidMount() {
         axios.get(`http://127.0.0.1:8000/api/heroes/1/?format=json`)
           .then(res => {
-            this.setState({hero_json: res.data});
-            this.portrait_path = `${staticRoot}${this.state.hero_json["webm"]}`;
+            this.setState({hero_json: res.data,
+            			   portrait_path: `${staticRoot}${res.data["webm"]}`,
+            			   icon_png: `${staticRoot}${res.data["img"]}`});
             console.log("HELLO");
-            console.log(this.portrait_path);
         });
     }
 	
   	render() {
-        console.log("RENDER");
+        console.log(this.state.portrait_path);
+        console.log(this.state.icon_png);
     	return (
-
 			<div style={{paddingTop: '40px'}}>
 				<div className="HeroPage-header">
 					<div style={{textAlign: 'center'}}>
 						<h1>{this.state.hero_json["localized_name"]}</h1>
 						<video autoPlay loop preload>
-		  					<source src={`${staticRoot}${this.state.hero_json["webm"]}`} type="video/webm"/>
+		  					<source src={this.state.portrait_path} type="video/webm"/>
 						</video>
 						<div style={{paddingTop: '10px'}}>
 							<div className="HeroPage-health_bar">
@@ -158,7 +160,7 @@ class HeroPage extends React.Component {
 								<h5>200</h5>
 							</div>
 							<div style={{width: '234px', margin: '0 auto'}}>
-								<Image src={`${staticRoot}dota2assets/img/strength.png`} size="mini"/>
+								<Image src={this.state.icon_png} size="mini"/>
 								<Image src={`${staticRoot}dota2assets/img/agility.png`} size="mini"/>
 								<Image src={`${staticRoot}dota2assets/img/intelligence.png`} size="mini"/>
 							</div>
@@ -167,9 +169,9 @@ class HeroPage extends React.Component {
 				</div>
 				<div className="HeroPage-strip_agi"/>					
 				<h1> LMAO </h1>
-			</div>
-            
+			</div> 
     	);
+	    
   	}
 }
 
