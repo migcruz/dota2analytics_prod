@@ -4,6 +4,8 @@ import { Image } from "semantic-ui-react";
 import axios from 'axios';
 
 const staticRoot = window.django.urls.staticRoot;
+
+{/* async loading of webms dont work so paths must be stored in js file */}
 const hero_portrait_paths = {
 	"Abaddon": [102, `${staticRoot}dota2assets/webm/heroes/abaddon.webm`],
     "Alchemist": [73, `${staticRoot}dota2assets/webm/heroes/alchemist.webm`],
@@ -134,7 +136,7 @@ class HeroPage extends React.Component {
     componentDidMount() {
         axios.get(`http://127.0.0.1:8000/api/heroes/${this.hero_id}/?format=json`)
           .then(res => {
-            this.setState({hero_json: res.data,});
+            this.setState({hero_json: res.data});
         });
     }
 	
@@ -150,10 +152,10 @@ class HeroPage extends React.Component {
 						</video>
 						<div style={{paddingTop: '10px'}}>
 							<div className="HeroPage-health_bar">
-								<h5>200</h5>
+								<h5>{`${this.state.hero_json["base_health"]+(20*this.state.hero_json["base_str"])}`}</h5>
 							</div>
 							<div className="HeroPage-mana_bar">
-								<h5>200</h5>
+								<h5>{`${this.state.hero_json["base_mana"]+(11*this.state.hero_json["base_int"])}`}</h5>
 							</div>
 							<div style={{width: '234px', margin: '0 auto'}}>
 								<Image src={`${staticRoot}dota2assets/img/strength.png`} size="mini"/>
