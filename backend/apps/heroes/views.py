@@ -9,3 +9,4 @@ class HeroViewSet(viewsets.ModelViewSet):
     """
     queryset = Hero.objects.all()
     serializer_class = HeroSerializer
+    lookup_field = 'hero_id'
