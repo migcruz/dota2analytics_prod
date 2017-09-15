@@ -5,7 +5,7 @@ import RouteNotFound from "app/components/RouteNotFound";
 import Home from "app/home/Home"
 import FetchDemo from "app/home/components/FetchDemo";
 import HoverableComponent from "app/home/components/HoverableComponent";
-import HeroPage from "app/home/HeroPage"
+import HeroPage from "app/home/heropage/HeroPage"
 
 
 const urls = (

@@ -1,8 +1,11 @@
 import React from 'react';
-import HeroCard from './components/HeroCard';
-import { Image } from "semantic-ui-react";
+import { Image, Item, Grid } from "semantic-ui-react";
+import Attributes from './components/Attributes';
+import Abilities from './components/Abilities';
 import axios from 'axios';
 
+const health_per_str = 20;
+const mana_per_int = 11;
 const staticRoot = window.django.urls.staticRoot;
 
 {/* async loading of webms dont work so paths must be stored in js file */}
@@ -152,21 +155,27 @@ class HeroPage extends React.Component {
 						</video>
 						<div style={{paddingTop: '10px'}}>
 							<div className="HeroPage-health_bar">
-								<h5>{`${this.state.hero_json["base_health"]+(20*this.state.hero_json["base_str"])}`}</h5>
+								<h5>{`${this.state.hero_json["base_health"]+(health_per_str*this.state.hero_json["base_str"])}`}</h5>
 							</div>
 							<div className="HeroPage-mana_bar">
-								<h5>{`${this.state.hero_json["base_mana"]+(11*this.state.hero_json["base_int"])}`}</h5>
+								<h5>{`${this.state.hero_json["base_mana"]+(mana_per_int*this.state.hero_json["base_int"])}`}</h5>
 							</div>
-							<div style={{width: '234px', margin: '0 auto'}}>
-								<Image src={`${staticRoot}dota2assets/img/strength.png`} size="mini"/>
-								<Image src={`${staticRoot}dota2assets/img/agility.png`} size="mini"/>
-								<Image src={`${staticRoot}dota2assets/img/intelligence.png`} size="mini"/>
-							</div>
-						</div>
-					</div>
+                        </div>
+                        <div style={{width: '234px', margin: '10px auto 0'}}>
+                            <Attributes
+                                str={`${this.state.hero_json["base_str"]} + ${this.state.hero_json["str_gain"]}`} 
+                                agi={`${this.state.hero_json["base_agi"]} + ${this.state.hero_json["agi_gain"]}`}
+                                int={`${this.state.hero_json["base_int"]} + ${this.state.hero_json["int_gain"]}`}
+                                />
+                        </div>
+                    </div>
+                    
 				</div>
-				<div className="HeroPage-strip_agi"/>					
+				<div className={`HeroPage-strip_${this.state.hero_json["primary_attr"]}`}/>					
 				<h1> LMAO </h1>
+                <div style={{width: '500', margin: '10px auto 0'}}>
+					<Abilities/>
+				</div>
 			</div> 
     	);
 	    
@@ -188,5 +197,32 @@ export default HeroPage;
     				url={`${staticRoot}dota2assets/npc_dota_hero_queenofpain.webm`}
                   />
             
-    https://stackoverflow.com/questions/40351997/async-image-load-with-react-and-redux        
+    https://stackoverflow.com/questions/40351997/async-image-load-with-react-and-redux 
+    
+    <List>
+                            <List.Item>
+                                <Image avatar src={`${staticRoot}dota2assets/img/strength.png`} />
+                                <List.Content verticalAlign='middle'>
+                                    <List.Header as='h5'>
+                                        {`${this.state.hero_json["base_str"]} + ${this.state.hero_json["str_gain"]}`}
+                                    </List.Header>
+                                </List.Content>
+                            </List.Item>
+                            <List.Item>
+                                <Image avatar src={`${staticRoot}dota2assets/img/strength.png`} />
+                                <List.Content verticalAlign='middle'>
+                                    <List.Header as='h5'>
+                                        {`${this.state.hero_json["base_str"]} + ${this.state.hero_json["str_gain"]}`}
+                                    </List.Header>
+                                </List.Content>
+                            </List.Item>
+                            <List.Item>
+                                <Image avatar src={`${staticRoot}dota2assets/img/strength.png`} />
+                                <List.Content verticalAlign='middle'>
+                                    <List.Header as='h5'>
+                                        {`${this.state.hero_json["base_str"]} + ${this.state.hero_json["str_gain"]}`}
+                                    </List.Header>
+                                </List.Content>
+                            </List.Item>
+                        </List>
                 */}

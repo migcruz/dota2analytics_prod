@@ -1,5 +1,5 @@
 .HeroPage-header {
-	height: 500px;
+	height: 1000px;
 	padding: 20px;
     color: white;
 
@@ -81,7 +81,7 @@
 .HeroPage-mana_bar {
 	height: 20px;
 	width: 234px;
-	margin: 0 auto;
+	margin: 5px auto 0;
 	background:
 		-webkit-linear-gradient(45deg, hsla(197, 100%, 55%, 1) 0%, hsla(197, 100%, 55%, 0) 70%),
 		-webkit-linear-gradient(315deg, hsla(204, 84%, 50%, 1) 10%, hsla(204, 84%, 50%, 0) 80%),
