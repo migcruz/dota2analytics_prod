@@ -42,8 +42,24 @@ class Hero(models.Model):
 	def __unicode__(self):
 		return self.localized_name
 
+class Ability(models.Model):
+	hero = models.ForeignKey(Hero, related_name='abilities', on_delete=models.CASCADE)
+	ability_name = models.CharField(max_length=50, default="")
+	heroid = models.IntegerField(default=0)
+	ability_info = JSONField()
+	# dname = models.CharField(max_length=50, default="")
+	# behaviour =  ArrayField(models.CharField(max_length=20, default=""), default=list)
+	# dmg_type = models.CharField(max_length=50, default="")
+	# bkbpierce =  models.CharField(max_length=3, default="")
+	# desc = models.CharField(max_length=200, default="")
+	# dmg = models.CharField(max_length=10, default="")
+	# attrib = ArrayField(JSONField(), default=list)
+	# mc = ArrayField(models.CharField(max_length=4, default=""), default=list)
+	# cd = ArrayField(models.CharField(max_length=4, default=""), default=list)
+	# img = models.CharField(max_length=100, default="")
 
-
+	def __unicode__(self):
+		return self.ability_name
 
 
 
