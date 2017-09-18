@@ -168,14 +168,14 @@ class HeroPage extends React.Component {
                                 int={`${this.state.hero_json["base_int"]} + ${this.state.hero_json["int_gain"]}`}
                                 />
                         </div>
+                        <div style={{width: '500', margin: '10px auto 0'}}>
+                            <Abilities npc_hero_name={`${this.state.hero_json["name"]}`}/>
+                        </div>
                     </div>
                     
 				</div>
 				<div className={`HeroPage-strip_${this.state.hero_json["primary_attr"]}`}/>					
 				<h1> LMAO </h1>
-                <div style={{width: '500', margin: '10px auto 0'}}>
-					<Abilities/>
-				</div>
 			</div> 
     	);
 	    

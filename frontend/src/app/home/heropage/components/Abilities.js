@@ -1,5 +1,7 @@
 import React from 'react';
 import { Image, Grid } from 'semantic-ui-react';
+import axios from 'axios';
+
 
 const staticRoot = window.django.urls.staticRoot;
 
@@ -7,7 +9,15 @@ class Abilities extends React.Component {
 
     constructor(props) {
         super(props);
+        this.state = {abilities_list: {}}
         this.b = 4;
+    }
+
+    componentDidMount() {
+        axios.get(`http://127.0.0.1:8000/api/heroes/${this.hero_id}/?format=json`)
+          .then(res => {
+            this.setState({hero_json: res.data});
+        });
     }
 
   	render() {
