@@ -15,6 +15,14 @@ class AbilityViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows groups to be viewed or edited.
     """
-    queryset = Ability.objects.all()
+    #queryset = Ability.objects.all()
     serializer_class = AbilitySerializer
     lookup_field = 'ability_name'
+
+    def get_queryset(self):
+        """
+        This view should return a list of all the purchases for
+        the user as determined by the username portion of the URL.
+        """
+        heroid = self.kwargs['heroid']
+        return Ability.objects.all().filter(heroid=heroid)
