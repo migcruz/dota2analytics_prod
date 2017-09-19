@@ -129,7 +129,7 @@ class HeroPage extends React.Component {
 
 	constructor(props) {
         super(props);
-        this.state = {hero_json: {}}
+        this.state = {hero_json: null};
         this.hero_url = this.props.match.params.hero;
         this.portrait_path = hero_portrait_paths[this.hero_url][1];
         this.hero_id = hero_portrait_paths[this.hero_url][0];
@@ -144,40 +144,43 @@ class HeroPage extends React.Component {
     }
 	
   	render() {
-
-    	return (
-			<div style={{paddingTop: '40px'}}>
-				<div className="HeroPage-header">
-					<div style={{textAlign: 'center'}}>
-						<h1>{this.state.hero_json["localized_name"]}</h1>
-						<video autoPlay loop preload>
-		  					<source src={this.portrait_path} type="video/webm"/>
-						</video>
-						<div style={{paddingTop: '10px'}}>
-							<div className="HeroPage-health_bar">
-								<h5>{`${this.state.hero_json["base_health"]+(health_per_str*this.state.hero_json["base_str"])}`}</h5>
-							</div>
-							<div className="HeroPage-mana_bar">
-								<h5>{`${this.state.hero_json["base_mana"]+(mana_per_int*this.state.hero_json["base_int"])}`}</h5>
-							</div>
+        if (this.state.hero_json){
+            return (
+                <div style={{paddingTop: '40px'}}>
+                    <div className="HeroPage-header">
+                        <div style={{textAlign: 'center'}}>
+                            <h1>{this.state.hero_json["localized_name"]}</h1>
+                            <video autoPlay loop preload>
+                                <source src={this.portrait_path} type="video/webm"/>
+                            </video>
+                            <div style={{paddingTop: '10px'}}>
+                                <div className="HeroPage-health_bar">
+                                    <h5>{`${this.state.hero_json["base_health"]+(health_per_str*this.state.hero_json["base_str"])}`}</h5>
+                                </div>
+                                <div className="HeroPage-mana_bar">
+                                    <h5>{`${this.state.hero_json["base_mana"]+(mana_per_int*this.state.hero_json["base_int"])}`}</h5>
+                                </div>
+                            </div>
+                            <div style={{width: '234px', margin: '10px auto 0'}}>
+                                <Attributes
+                                    str={`${this.state.hero_json["base_str"]} + ${parseFloat(this.state.hero_json["str_gain"]).toFixed(2).toString()}`} 
+                                    agi={`${this.state.hero_json["base_agi"]} + ${parseFloat(this.state.hero_json["agi_gain"]).toFixed(2).toString()}`}
+                                    int={`${this.state.hero_json["base_int"]} + ${parseFloat(this.state.hero_json["int_gain"]).toFixed(2).toString()}`}
+                                    />
+                            </div>
+                            <div style={{width: '500', margin: '10px auto 0'}}>
+                                <Abilities skills={this.state.hero_json["abilities"]}/>
+                            </div>
                         </div>
-                        <div style={{width: '234px', margin: '10px auto 0'}}>
-                            <Attributes
-                                str={`${this.state.hero_json["base_str"]} + ${this.state.hero_json["str_gain"]}`} 
-                                agi={`${this.state.hero_json["base_agi"]} + ${this.state.hero_json["agi_gain"]}`}
-                                int={`${this.state.hero_json["base_int"]} + ${this.state.hero_json["int_gain"]}`}
-                                />
-                        </div>
-                        <div style={{width: '500', margin: '10px auto 0'}}>
-                            <Abilities npc_hero_name={`${this.state.hero_json["name"]}`}/>
-                        </div>
+                        
                     </div>
-                    
-				</div>
-				<div className={`HeroPage-strip_${this.state.hero_json["primary_attr"]}`}/>					
-				<h1> LMAO </h1>
-			</div> 
-    	);
+                    <div className={`HeroPage-strip_${this.state.hero_json["primary_attr"]}`}/>                 
+                    <h1> LMAO </h1>
+                </div> 
+            );
+        }
+        return <div>Loading...</div>
+    	
 	    
   	}
 }

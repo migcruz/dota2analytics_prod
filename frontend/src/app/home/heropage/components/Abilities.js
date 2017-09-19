@@ -9,59 +9,60 @@ class Abilities extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {abilities_list: {}}
+        this.abilities = this.props.skills;
+        this.state = {abilities_list: {}};
         this.b = 4;
     }
 
     componentDidMount() {
-        axios.get(`http://127.0.0.1:8000/api/heroes/${this.hero_id}/?format=json`)
-          .then(res => {
-            this.setState({hero_json: res.data});
-        });
+        // axios.get(`http://127.0.0.1:8000/api/heroes/${this.hero_id}/?format=json`)
+        //   .then(res => {
+        //     this.setState({hero_json: res.data});
+        // });
     }
 
   	render() {
-
+        console.log(this.abilities)
     	return (
             <Grid>
                 <Grid.Row columns={4} key={this.b.toString()} centered>
                     <Grid.Column key={"am1"}>
                         <div className="HeroGrid-wrapper">
                             <div className="HeroGrid-name">
-                                <h5>am1</h5>
+                                <h5>{this.abilities[0]["ability_info"]["dname"]}</h5>
                             </div>
                             <div className="HeroGrid-hero">
-                                <Image src={`${staticRoot}dota2assets/img/spellicons/antimage_mana_break.png`}/>
+                                <Image src={`${staticRoot}${this.abilities[0]["ability_info"]["img"]}`} alt="skill"/>
                             </div>
                         </div>
                     </Grid.Column>
                     <Grid.Column key={"am2"}>
                         <div className="HeroGrid-wrapper">
                             <div className="HeroGrid-name">
-                                <h5>am2</h5>
+                                <h5>{this.abilities[1]["ability_info"]["dname"]}</h5>
                             </div>
                             <div className="HeroGrid-hero">
-                                <Image src={`${staticRoot}dota2assets/img/spellicons/antimage_mana_break.png`}/>
+                                <Image src={`${staticRoot}${this.abilities[1]["ability_info"]["img"]}`} alt="skill"/>
                             </div>
                         </div>
                     </Grid.Column>
                     <Grid.Column key={"am3"}>
                         <div className="HeroGrid-wrapper">
                             <div className="HeroGrid-name">
-                                <h5>am3</h5>
+                                <h5>{this.abilities[2]["ability_info"]["dname"]}</h5>
                             </div>
                             <div className="HeroGrid-hero">
-                                <Image src={`${staticRoot}dota2assets/img/spellicons/antimage_mana_break.png`}/>
+                                <Image src={`${staticRoot}${this.abilities[2]["ability_info"]["img"]}`} alt="skill"/>
                             </div>
                         </div>
                     </Grid.Column>
                     <Grid.Column key={"am4"}>
                         <div className="HeroGrid-wrapper">
                             <div className="HeroGrid-name">
-                                <h5>am4</h5>
+                                <h5>{this.abilities[3]["ability_info"]["dname"]}</h5>
                             </div>
                             <div className="HeroGrid-hero">
-                                <Image src={`${staticRoot}dota2assets/img/spellicons/antimage_mana_break.png`}/>
+                                <Image src={`${staticRoot}${this.abilities[3]["ability_info"]["img"]}`} alt="skill"/>
                             </div>
                         </div>
                     </Grid.Column>

@@ -61,19 +61,19 @@ from heroes.models import Hero, Ability
 
 
 
-# with open('hero_abilities2.json') as filepath:
-#  	hero_abilities2 = json.load(filepath, object_pairs_hook=OrderedDict)
+with open('hero_abilities2.json') as filepath:
+ 	hero_abilities2 = json.load(filepath, object_pairs_hook=OrderedDict)
 
-# heros = Hero.objects.all()
-# for hero in heros:
-#     for key, val in hero_abilities2.iteritems():
-#         if hero.hero_id == val["hero_id"]:
-#             p = Ability.objects.create(
-#                 hero = hero,
-#                 ability_name = val["ability_name"],
-#                 heroid = val["hero_id"],
-#                 ability_info = val["ability_info"]
-#             )
+heros = Hero.objects.all()
+for hero in heros:
+    for key, val in hero_abilities2.iteritems():
+        if hero.hero_id == val["hero_id"]:
+            p = Ability.objects.create(
+                hero = hero,
+                ability_name = val["ability_name"],
+                heroid = val["hero_id"],
+                ability_info = val["ability_info"]
+            )
 
 # abilities = Ability.objects.all()
 # print abilities[0].ability_info
