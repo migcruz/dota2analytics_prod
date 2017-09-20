@@ -10,27 +10,54 @@ class Abilities extends React.Component {
     constructor(props) {
         super(props);
         this.abilities = this.props.skills;
-        this.b = 4;
-        this.ability_row;
-        var row = [];
 
-        for (var i = 0; i < this.abilities.length; i++){     
-            row.push(
-                <Grid.Column key={this.abilities[i]["ability_name"]}>
-                    <div className="HeroGrid-wrapper">
-                        <div className="HeroGrid-name">
-                            <h5>{this.abilities[i]["ability_info"]["dname"]}</h5>
+        this.ability_row;
+        this.special_ability_row;
+        var row = [];
+        var special_row = [];
+
+        for (var i = 0; i < this.abilities.length; i++){
+            var is_special = false;
+            for (var j =0; j < this.abilities[i]["ability_info"]["behavior"].length; j++){
+                if (this.abilities[i]["ability_info"]["behavior"][j] == "Hidden"){
+                    is_special = true;
+                }
+            }
+            if (is_special){
+                special_row.push(
+                    <Grid.Column key={this.abilities[i]["ability_name"]}>
+                        <div className="HeroGrid-wrapper">
+                            <div className="HeroGrid-name">
+                                <h5>{this.abilities[i]["ability_info"]["dname"]}</h5>
+                            </div>
+                            <div className="HeroGrid-hero">
+                                <Image src={`${staticRoot}${this.abilities[i]["ability_info"]["img"]}`} alt="skill"/>
+                            </div>
                         </div>
-                        <div className="HeroGrid-hero">
-                            <Image src={`${staticRoot}${this.abilities[i]["ability_info"]["img"]}`} alt="skill"/>
+                    </Grid.Column>
+                );
+            } 
+            else {
+                row.push(
+                    <Grid.Column key={this.abilities[i]["ability_name"]}>
+                        <div className="HeroGrid-wrapper">
+                            <div className="HeroGrid-name">
+                                <h5>{this.abilities[i]["ability_info"]["dname"]}</h5>
+                            </div>
+                            <div className="HeroGrid-hero">
+                                <Image src={`${staticRoot}${this.abilities[i]["ability_info"]["img"]}`} alt="skill"/>
+                            </div>
                         </div>
-                    </div>
-                </Grid.Column>
-            );
+                    </Grid.Column>
+                );
+            }     
         }
         this.ability_row =  <Grid.Row columns={this.abilities.length} key="ability_row" centered>
                                 {row}
                             </Grid.Row>
+        this.special_ability_row =  <Grid.Row columns={this.abilities.length} key="special_ability_row" centered>
+                                        {special_row}
+                                    </Grid.Row>
     }
 
   	render() {
@@ -38,6 +65,7 @@ class Abilities extends React.Component {
     	return (
             <Grid>
                 {this.ability_row}
+                {this.special_ability_row}
             </Grid>
     	);
  	}
