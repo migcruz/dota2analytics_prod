@@ -176,7 +176,7 @@ class HeroPage extends React.Component {
                                 int={`${this.hero_json["base_int"]} + ${parseFloat(this.hero_json["int_gain"]).toFixed(2).toString()}`}
                                 />
                         </div>
-                        <div style={{width: '500', margin: '10px auto 0'}}>
+                        <div style={{width: '1000', margin: '10px auto 0'}}>
                             {comp}
                         </div>
                     </div>
