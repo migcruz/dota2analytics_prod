@@ -31,7 +31,7 @@ class Abilities extends React.Component {
                                 <h5>{this.abilities[i]["ability_info"]["dname"]}</h5>
                             </div>
                             <div className="HeroGrid-hero">
-                                <Image src={`${staticRoot}${this.abilities[i]["ability_info"]["img"]}`} alt="skill" size="small"/>
+                                <Image src={`${staticRoot}${this.abilities[i]["ability_info"]["img"]}`} alt="skill"/>
                             </div>
                         </div>
                     </Grid.Column>
@@ -45,17 +45,17 @@ class Abilities extends React.Component {
                                 <h5>{this.abilities[i]["ability_info"]["dname"]}</h5>
                             </div>
                             <div className="HeroGrid-hero">
-                                <Image src={`${staticRoot}${this.abilities[i]["ability_info"]["img"]}`} alt="skill" size="small"/>
+                                <Image src={`${staticRoot}${this.abilities[i]["ability_info"]["img"]}`} alt="skill"/>
                             </div>
                         </div>
                     </Grid.Column>
                 );
             }     
         }
-        this.ability_row =  <Grid.Row columns={row.length} key="ability_row" centered>
+        this.ability_row =  <Grid.Row columns={10} key="ability_row" centered>
                                 {row}
                             </Grid.Row>
-        this.special_ability_row =  <Grid.Row columns={special_row.length} key="special_ability_row" centered>
+        this.special_ability_row =  <Grid.Row columns={10} key="special_ability_row" centered>
                                         {special_row}
                                     </Grid.Row>
     }

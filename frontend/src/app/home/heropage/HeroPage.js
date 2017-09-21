@@ -176,13 +176,8 @@ class HeroPage extends React.Component {
                                 int={`${this.hero_json["base_int"]} + ${parseFloat(this.hero_json["int_gain"]).toFixed(2).toString()}`}
                                 />
                         </div>
-                        <div style={{width: '1800', margin: '20px auto 0'}}>
-                            {/* How to center floating component */}
-                            <div style={{position: 'relative', float: 'right', left: '-50%'}}>
-                                <div style={{position: 'relative', left: '50%'}}>
-                                    {comp}
-                                </div>
-                            </div>
+                        <div style={{padding: '20px'}}>
+                            {comp}
                         </div>
                     </div>
                     
@@ -239,4 +234,15 @@ export default HeroPage;
                                 </List.Content>
                             </List.Item>
                         </List>
-                */}
+                
+                
+
+                how to centercomponent
+                <div style={{position: 'relative', float: 'right', left: '-50%'}}>
+                    <div style={{position: 'relative', left: '50%'}}>
+                        {comp}
+                    </div>
+                </div>
+                
+                
+                    */}
