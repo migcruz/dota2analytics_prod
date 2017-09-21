@@ -5,7 +5,7 @@ from .models import Hero, Ability
 
 class HeroViewSet(viewsets.ModelViewSet):
     """
-    API endpoint that allows groups to be viewed or edited.
+    API endpoint that allows Heroes to be viewed or edited.
     """
     queryset = Hero.objects.all()
     serializer_class = HeroSerializer
@@ -13,7 +13,7 @@ class HeroViewSet(viewsets.ModelViewSet):
 
 class AbilityViewSet(viewsets.ModelViewSet):
     """
-    API endpoint that allows groups to be viewed or edited.
+    API endpoint that allows Abilities to be viewed or edited.
     """
     #queryset = Ability.objects.all()
     serializer_class = AbilitySerializer
@@ -21,8 +21,7 @@ class AbilityViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         """
-        This view should return a list of all the purchases for
-        the user as determined by the username portion of the URL.
+        This view should return a list of all the abilities of a hero.
         """
         heroid = self.kwargs['heroid']
         return Ability.objects.all().filter(heroid=heroid)

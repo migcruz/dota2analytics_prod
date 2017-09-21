@@ -61,12 +61,12 @@ from heroes.models import Hero, Ability
 
 
 x = 0
-with open('hero_abilities2.json') as filepath:
- 	hero_abilities2 = json.load(filepath, object_pairs_hook=OrderedDict)
+with open('drf_hero_abilities.json') as filepath:
+ 	drf_hero_abilities = json.load(filepath, object_pairs_hook=OrderedDict)
 
 heros = Hero.objects.all()
 for hero in heros:
-    for key, val in hero_abilities2.iteritems():
+    for key, val in drf_hero_abilities.iteritems():
         if hero.hero_id == val["hero_id"]:
             p = Ability.objects.create(
                 created_order = x,
