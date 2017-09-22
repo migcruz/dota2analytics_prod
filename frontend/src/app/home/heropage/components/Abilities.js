@@ -26,12 +26,14 @@ class Abilities extends React.Component {
             if (is_special){
                 special_row.push(
                     <Grid.Column key={this.abilities[i]["ability_name"]}>
-                        <div className="HeroGrid-wrapper">
-                            <div className="HeroGrid-name">
-                                <h5>{this.abilities[i]["ability_info"]["dname"]}</h5>
-                            </div>
-                            <div className="HeroGrid-hero">
-                                <Image src={`${staticRoot}${this.abilities[i]["ability_info"]["img"]}`} alt="skill"/>
+                        <div style={{boxShadow: '1px 1px 5px #323131 inset', padding: '2px'}}>
+                            <div className="HeroGrid-wrapper">
+                                <div className="HeroGrid-name">
+                                    <h5>{this.abilities[i]["ability_info"]["dname"]}</h5>
+                                </div>
+                                <div className="HeroGrid-hero">
+                                    <Image src={`${staticRoot}${this.abilities[i]["ability_info"]["img"]}`} alt="skill"/>
+                                </div>
                             </div>
                         </div>
                     </Grid.Column>
@@ -45,17 +47,19 @@ class Abilities extends React.Component {
                                 <h5>{this.abilities[i]["ability_info"]["dname"]}</h5>
                             </div>
                             <div className="HeroGrid-hero">
+                                {/* Put box shadow after image to give effect */}
                                 <Image src={`${staticRoot}${this.abilities[i]["ability_info"]["img"]}`} alt="skill"/>
+                                <div style={{boxShadow: '0 1px 0 rgba(255,255,255,.2), inset 0 4px 5px rgba(0,0,0,.6), inset 0 1px 0 rgba(0,0,0,.6)', position: 'absolute', width: '100%', height: '100%', top: '0', left: '0'}}/>
                             </div>
                         </div>
                     </Grid.Column>
                 );
             }     
         }
-        this.ability_row =  <Grid.Row columns={10} key="ability_row" centered>
+        this.ability_row =  <Grid.Row columns={15} key="ability_row" centered>
                                 {row}
                             </Grid.Row>
-        this.special_ability_row =  <Grid.Row columns={10} key="special_ability_row" centered>
+        this.special_ability_row =  <Grid.Row columns={15} key="special_ability_row" centered>
                                         {special_row}
                                     </Grid.Row>
     }

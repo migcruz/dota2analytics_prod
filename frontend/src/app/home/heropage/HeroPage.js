@@ -176,7 +176,7 @@ class HeroPage extends React.Component {
                                 int={`${this.hero_json["base_int"]} + ${parseFloat(this.hero_json["int_gain"]).toFixed(2).toString()}`}
                                 />
                         </div>
-                        <div style={{padding: '20px'}}>
+                        <div className="HeroPage-abilities">
                             {comp}
                         </div>
                     </div>
@@ -237,7 +237,7 @@ export default HeroPage;
                 
                 
 
-                how to centercomponent
+                how to centercomponent (nah jsut use grid from heroes and put an aritrary (15) number of columns)
                 <div style={{position: 'relative', float: 'right', left: '-50%'}}>
                     <div style={{position: 'relative', left: '50%'}}>
                         {comp}
@@ -245,4 +245,7 @@ export default HeroPage;
                 </div>
                 
                 
+                https://webbridgestudios.com/how-to-create-a-css-noise-background-with-a-gradient/
+                http://webdesignerwall.com/tutorials/css3-image-styles
+
                     */}

@@ -1,3 +1,10 @@
+
+.HeroPage-abilities {
+	padding: 20px;
+	box-shadow: 1px 1px 5px #323131 inset;
+	}
+
+
 .HeroPage-header {
 	height: 1000px;
 	padding: 20px;
