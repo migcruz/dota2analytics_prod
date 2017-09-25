@@ -10,6 +10,8 @@
 	padding: 20px;
     color: white;
 
+	
+
 	background:
 		-webkit-linear-gradient(45deg, hsla(37, 3%, 31%, 1) 0%, hsla(37, 3%, 31%, 0) 70%),
 		-webkit-linear-gradient(315deg, hsla(55, 4%, 36%, 1) 10%, hsla(55, 4%, 36%, 0) 80%),
@@ -20,6 +22,10 @@
 		linear-gradient(135deg, hsla(55, 4%, 36%, 1) 10%, hsla(55, 4%, 36%, 0) 80%),
 		linear-gradient(225deg, hsla(83, 0%, 33%, 1) 10%, hsla(83, 0%, 33%, 0) 80%),
 		linear-gradient(315deg, hsla(248, 12%, 27%, 1) 100%, hsla(248, 12%, 27%, 0) 70%);
+
+
+
+	
 	}
 
 

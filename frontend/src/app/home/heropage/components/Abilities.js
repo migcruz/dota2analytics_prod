@@ -26,7 +26,7 @@ class Abilities extends React.Component {
             if (is_special){
                 special_row.push(
                     <Grid.Column key={this.abilities[i]["ability_name"]}>
-                        <div style={{boxShadow: '1px 1px 5px #323131 inset', padding: '2px'}}>
+                        <div style={{boxShadow: '1px 1px 5px #323131 inset'}}>
                             <div className="HeroGrid-wrapper">
                                 <div className="HeroGrid-name">
                                     <h5>{this.abilities[i]["ability_info"]["dname"]}</h5>
@@ -47,9 +47,9 @@ class Abilities extends React.Component {
                                 <h5>{this.abilities[i]["ability_info"]["dname"]}</h5>
                             </div>
                             <div className="HeroGrid-hero">
-                                {/* Put box shadow after image to give effect */}
+                                {/* Put box shadow after image to give effect https://stackoverflow.com/questions/21414925/why-doesnt-inset-box-shadow-work-over-images */}
                                 <Image src={`${staticRoot}${this.abilities[i]["ability_info"]["img"]}`} alt="skill"/>
-                                <div style={{boxShadow: '0 1px 0 rgba(255,255,255,.2), inset 0 4px 5px rgba(0,0,0,.6), inset 0 1px 0 rgba(0,0,0,.6)', position: 'absolute', width: '100%', height: '100%', top: '0', left: '0'}}/>
+                                <div style={{boxShadow: '0 1px 0 rgba(255,255,255,.2), inset 0 4px 5px rgba(0,0,0,.6), inset 0 0.5px 0 rgba(0,0,0,.6)', position: 'absolute', width: '100%', height: '100%', top: '0', left: '0'}}/>
                             </div>
                         </div>
                     </Grid.Column>
