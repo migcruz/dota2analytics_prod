@@ -4,7 +4,13 @@ from django.db import models
 from django.contrib.postgres.fields import JSONField, ArrayField
 
 # Create your models here.
+# TO RESET DB FOLLOW THIS https://stackoverflow.com/questions/23755523/how-to-reset-migrations-in-django-1-7
 
+# manage.py migrate <app-name> zero to clear migrations table, 
+# then remove <app-name>/migrations/ >>folder<< or contents. Then manage.py makemigrations <app-name> 
+# and finally do manage.py migrate <app-name>. 
+# This will tidy up your migrations without making other database changes.
+# Then change something in model like a default > makemigrations>migrate then revert change and makeigrations>migrate again
 
 class Hero(models.Model):
 	hero_id = models.IntegerField(default=0)
@@ -12,7 +18,7 @@ class Hero(models.Model):
 	localized_name = models.CharField(max_length=50, default="")
 	primary_attr = models.CharField(max_length=3, default="")
 	attack_type = models.CharField(max_length=6, default="")
-	roles = ArrayField(models.CharField(max_length=12, default=""), default=list)
+	roles = JSONField()
 	webm = models.CharField(max_length=100, default="")
 	img = models.CharField(max_length=100, default="")
 	icon = models.CharField(max_length=100, default="")
@@ -38,6 +44,7 @@ class Hero(models.Model):
 	turn_rate = models.FloatField(default=0.0)
 	cm_enabled = models.BooleanField(default=True)
 	legs = models.IntegerField(default=0)
+	complexity = models.IntegerField(default=0)
 
 	def __unicode__(self):
 		return self.localized_name
@@ -50,7 +57,7 @@ class Ability(models.Model):
 	ability_info = JSONField()
 	
 	class Meta:
-		ordering = ('created_order',)
+		ordering = ('created_order',) # Allows abilities to be displayed in order in DRF
 
 	def __unicode__(self):
 		return self.ability_name

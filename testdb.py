@@ -11,13 +11,13 @@ from heroes.models import Hero, Ability
 
 
 
-
+######## Heroes ######
 # heros = Hero.objects.all()
 # print type(heros)
 # for hero in heros:
 #     print hero
 
-# with open('heroes2.json') as filepath:
+# with open('drf_heroes.json') as filepath:
 #  	heroes_json = json.load(filepath, object_pairs_hook=OrderedDict)
 
 # for key, val in heroes_json.iteritems():
@@ -52,14 +52,17 @@ from heroes.models import Hero, Ability
 #         move_speed = val["move_speed"],
 #         turn_rate = val["turn_rate"],
 #         cm_enabled = val["cm_enabled"],
-#         legs = val["legs"]
+#         legs = val["legs"],
+#         complexity = val["complexity"]
 #     )
 
+
+# heroes = Hero.objects.all().delete()
 # heros = Hero.objects.all()
 # print heros, len(heros)
 
 
-
+######## Abilities ######
 x = 0
 with open('drf_hero_abilities.json') as filepath:
  	drf_hero_abilities = json.load(filepath, object_pairs_hook=OrderedDict)

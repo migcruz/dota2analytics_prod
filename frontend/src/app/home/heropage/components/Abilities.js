@@ -17,12 +17,26 @@ class Abilities extends React.Component {
         var special_row = [];
 
         for (var i = 0; i < this.abilities.length; i++){
+            var modifiers = [];
             var is_special = false;
             for (var j =0; j < this.abilities[i]["ability_info"]["behavior"].length; j++){
                 if (this.abilities[i]["ability_info"]["behavior"][j] == "Hidden"){
                     is_special = true;
                 }
             }
+            if (this.abilities[i]["ability_info"]["bkbpierce"] == "Yes"){
+                modifiers.push(<Image src={`${staticRoot}dota2assets/img/items_25x18/black_king_bar.png`}/>)
+            }
+            if (this.abilities[i]["ability_info"]["has_scepter_upgrade"] == 1){
+                modifiers.push(<Image src={`${staticRoot}dota2assets/img/items_25x18/ultimate_scepter.png`}/>)
+            }
+            if (this.abilities[i]["ability_info"]["dispellable_type"] == "SPELL_DISPELLABLE_YES"){
+                modifiers.push(<Image src={`${staticRoot}dota2assets/img/items_25x18/diffusal_blade.png`}/>)
+            }
+            if (this.abilities[i]["ability_info"]["dispellable_type"] == "SPELL_DISPELLABLE_YES_STRONG"){
+                modifiers.push(<Image src={`${staticRoot}dota2assets/img/items_25x18/diffusal_blade_2.png`}/>)
+            }
+
             if (is_special){
                 special_row.push(
                     <Grid.Column key={this.abilities[i]["ability_name"]}>
@@ -42,11 +56,9 @@ class Abilities extends React.Component {
             else {
                 row.push(
                     <Grid.Column key={this.abilities[i]["ability_name"]}>
-                        <div style={{position: 'relative', top: '0', left: '0'}}>
+                        <div style={{position: 'relative', top: '0', left: '0', height: '23px'}}>
                             <Image.Group>
-                                <Image src={`${staticRoot}dota2assets/img/items_25x18/black_king_bar.png`}/>
-                                <Image src={`${staticRoot}dota2assets/img/items_25x18/black_king_bar.png`}/>
-                                <Image src={`${staticRoot}dota2assets/img/items_25x18/black_king_bar.png`}/>
+                                {modifiers}
                             </Image.Group>
                         </div>
                         <div className="HeroGrid-wrapper">
