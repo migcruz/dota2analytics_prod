@@ -1,6 +1,5 @@
 import React from 'react';
 import { Image, Grid } from 'semantic-ui-react';
-import axios from 'axios';
 
 
 const staticRoot = window.django.urls.staticRoot;
@@ -19,7 +18,7 @@ class Abilities extends React.Component {
         for (var i = 0; i < this.abilities.length; i++){
             var modifiers = [];
             var is_special = false;
-            for (var j =0; j < this.abilities[i]["ability_info"]["behavior"].length; j++){
+            for (var j = 0; j < this.abilities[i]["ability_info"]["behavior"].length; j++){
                 if (this.abilities[i]["ability_info"]["behavior"][j] == "Hidden"){
                     is_special = true;
                 }

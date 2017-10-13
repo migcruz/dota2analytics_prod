@@ -4,7 +4,6 @@ import Attributes from './components/Attributes';
 import Abilities from './components/Abilities';
 import Roles from './components/Roles';
 import axios from 'axios';
-import { VictoryChart, VictoryBar, VictoryTheme, VictoryPolarAxis } from 'victory'; 
 
 const health_per_str = 20;
 const mana_per_int = 11;
@@ -136,7 +135,6 @@ class HeroPage extends React.Component {
         this.portrait_path = hero_portrait_paths[this.hero_url][1];
         this.hero_id = hero_portrait_paths[this.hero_url][0];
         this.hero_json = {};
-
     }
     
     componentDidMount() {
@@ -150,22 +148,25 @@ class HeroPage extends React.Component {
   	render() {
         var comp;
         var hero_roles;
+        var roles;
         if (this.state.fetched){
             comp = <Abilities skills={this.hero_json["abilities"]}/>
             comp = null;
+            roles = _.keys(this.hero_json["roles"]).join(" ");
             hero_roles = <Roles roles={this.hero_json["roles"]}/>
             
         }
         else {
             hero_roles = null;
             comp = null;
+            roles = null;
         }
         return (
             <div style={{paddingTop: '40px'}}>
                 <div className="HeroPage-header">
                     <div style={{textAlign: 'center'}}>
                         <h1>{this.hero_json["localized_name"]}</h1>
-                        <div>{hero_roles}</div>
+                        <h4>{roles}</h4>
                         {/*<video autoPlay loop preload>
                             <source src={this.portrait_path} type="video/webm"/>
                         </video>*/}
@@ -193,40 +194,7 @@ class HeroPage extends React.Component {
                 <div className={`HeroPage-strip_${this.hero_json["primary_attr"]}`}/>                 
                 <h1> LMAO </h1>
                 <div style={{width: '400px'}}>
-                    <VictoryChart polar theme={VictoryTheme.material}>
-                        {
-                            ["Carry", "Support", "Initiator", "Escape", "Nuker", "Pusher", "Disabler", "Jungler", "Durable"].map((d, i) => {
-                                return (
-                                <VictoryPolarAxis dependentAxis
-                                    key={i}
-                                    label={d}
-                                    labelPlacement="perpendicular"
-                                    style={{ 
-                                        tickLabels: { fill: "none" },
-                                      axis: { stroke: "grey", strokeWidth: 1},
-                                      grid: { stroke: "none", strokeWidth: 0.1, opacity: 0.5 },
-                                      axisLabel: { fill: "white" }
-                                    }}
-                                    axisValue={i}
-                                />
-                                );
-                            })
-                        }
-                        <VictoryBar
-                        style={{ data: { fill: "tomato", width: 40 } }}
-                        data={[
-                            { x: 0, y: 0 },
-                            { x: 1, y: 1 },
-                            { x: 2, y: 2 },
-                            { x: 3, y: 3 },
-                            { x: 4, y: 1 },
-                            { x: 5, y: 3 },
-                            { x: 6, y: 2 },
-                            { x: 7, y: 0 },
-                            { x: 8, y: 1 }
-                        ]}
-                        />
-                    </VictoryChart>
+                    {hero_roles}
                 </div>
             </div> 
         );
