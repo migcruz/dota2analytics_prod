@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image, Grid } from 'semantic-ui-react';
-import { VictoryChart, VictoryBar, VictoryStack, VictoryPolarAxis, VictoryTheme } from 'victory'; 
+import { VictoryChart, VictoryBar, VictoryStack, VictoryPolarAxis, VictoryTheme, VictoryPie } from 'victory'; 
 
 
 const staticRoot = window.django.urls.staticRoot;
@@ -13,36 +13,71 @@ class Roles extends React.Component {
         super(props);
         this.roles = this.props.roles;
 
-        this.role_data = [
-            { x: 0, y: 0 },
-            { x: 40, y: 0 },
-            { x: 80, y: 0 },
-            { x: 120, y: 0 },
-            { x: 160, y: 0 },
-            { x: 200, y: 0 },
-            { x: 240, y: 0 },
-            { x: 280, y: 0 },
-            { x: 320, y: 0 }
+        this.role_data1 = [
+            { x: 0, y: 0},
+            { x: 40, y: 0},
+            { x: 80, y: 0},
+            { x: 120, y: 0},
+            { x: 160, y: 0},
+            { x: 200, y: 0},
+            { x: 240, y: 0},
+            { x: 280, y: 0},
+            { x: 320, y: 0}
+        ];
+
+        this.role_data2 = [
+            { x: 0, y: 0},
+            { x: 40, y: 0},
+            { x: 80, y: 0},
+            { x: 120, y: 0},
+            { x: 160, y: 0},
+            { x: 200, y: 0},
+            { x: 240, y: 0},
+            { x: 280, y: 0},
+            { x: 320, y: 0}
+        ];
+
+        this.role_data3 = [
+            { x: 0, y: 0},
+            { x: 40, y: 0},
+            { x: 80, y: 0},
+            { x: 120, y: 0},
+            { x: 160, y: 0},
+            { x: 200, y: 0},
+            { x: 240, y: 0},
+            { x: 280, y: 0},
+            { x: 320, y: 0}
         ];
 
         {/* so that the chart has a range up to 3 even if hero roles only has a max of "2" */}
         this.role_data_dummy = [
-            { x: 0, y: 3 },
-            { x: 40, y: 3 },
-            { x: 80, y: 3 },
-            { x: 120, y: 3 },
-            { x: 160, y: 3 },
-            { x: 200, y: 3 },
-            { x: 240, y: 3 },
-            { x: 280, y: 3 },
-            { x: 320, y: 3 }
+            { x: 0, y: 4 },
+            { x: 40, y: 4 },
+            { x: 80, y: 4 },
+            { x: 120, y: 4 },
+            { x: 160, y: 4 },
+            { x: 200, y: 4 },
+            { x: 240, y: 4 },
+            { x: 280, y: 4 },
+            { x: 320, y: 4 }
         ];
        
         for (var role in this.roles){
             var role_level = this.roles[role];
             for (var i = 0; i < role_array.length; i++){
                 if (role == role_array[i]){
-                    this.role_data[i]["y"] = role_level;
+                    if (role_level == 1) {
+                        this.role_data1[i]["y"] = 2;
+                    }
+                    else if (role_level == 2) {
+                        this.role_data1[i]["y"] = 2;
+                        this.role_data2[i]["y"] = 1;
+                    }
+                    else if (role_level == 3) {
+                        this.role_data1[i]["y"] = 2;
+                        this.role_data2[i]["y"] = 1;
+                        this.role_data3[i]["y"] = 1;
+                    }
                 }
             }
         }
@@ -62,32 +97,85 @@ class Roles extends React.Component {
 
                     </defs>
                 </svg>
-                <VictoryChart polar theme={VictoryTheme.material} domainPadding={{ y: 10 }}>
+                <VictoryChart polar theme={VictoryTheme.material} domainPadding={{ y: 10 }}
+                    innerRadius={20}
+                >
                             
-                    <VictoryPolarAxis
-                        tickValues={_.keys(role_ticks).map((k) => +k)}
-                        tickFormat={_.values(role_ticks)}
-                        labelPlacement="vertical"
-                        style={{ 
-                            tickLabels: { fill: "white" },
-                            axis: { stroke: "grey", strokeWidth: 0.5},
-                            grid: { stroke: "grey", strokeWidth: 0.1, opacity: 1 },
-                            axisLabel: {fill: "black"}
-                        }}
-                    />
                     <VictoryBar
                         style={{ data: { fill: "none", width: 40 } }}
                         data={this.role_data_dummy}
                     />
                     <VictoryStack
                         colorScale={[
-                            "url(#gradient1)", 
+                            "gold",
+                            "orange",
+                            "tomato",
+                            "url(#gradient1)"
                             ]}>
                         <VictoryBar
-                            style={{ data: { width: 40 } }}
-                            data={this.role_data}
+                            style={{
+                                data: {stroke: "transparent", strokeWidth: 1}
+                            }}
+                            data={this.role_data1}
                         />
-                    </VictoryStack>         
+                        <VictoryBar
+                            style={{
+                                data: {stroke: "transparent", strokeWidth: 1}
+                            }}
+                            data={this.role_data2}
+                        />
+                        <VictoryBar
+                            style={{
+                                data: {stroke: "transparent", strokeWidth: 1}
+                            }}
+                            data={this.role_data3}
+                        />
+                       
+                    </VictoryStack>
+                    <VictoryBar
+                        style={{ data: { fill: "red" } }}
+                        data={[
+                            { x: 0, y: 0.5 },
+                            { x: 40, y: 0.5 },
+                            { x: 80, y: 0.5 },
+                            { x: 120, y: 0.5 },
+                            { x: 160, y: 0.5 },
+                            { x: 200, y: 0.5 },
+                            { x: 240, y: 0.5 },
+                            { x: 280, y: 0.5 },
+                            { x: 320, y: 0.5 }
+                        ]}
+                    />
+                    <VictoryPolarAxis dependentAxis
+                        tickValues={[2, 3, 4]}
+                        style={{ 
+                            tickLabels: { fill: "none" },
+                            axis: { stroke: "none", strokeWidth: 0.5},
+                            grid: { stroke: "none", strokeWidth: 0.2, opacity: 1, strokeDasharray: "5,0" },
+                            axisLabel: {fill: "black"}
+                        }}
+                    />
+                    <VictoryPie
+                        data={[
+                            { x: "Carry", y: 1 },
+                            { x: "Escape", y: 1 },
+                            { x: "Pusher", y: 1 },
+                            { x: "Jungler", y: 1 },
+                            { x: "Disabler", y: 1 },
+                            { x: "Support", y: 1 },
+                            { x: "Initiator", y: 1 },
+                            { x: "Nuker", y: 1 },
+                            { x: "Durable", y: 1 }
+                        ]}
+                        innerRadius={120}
+                        startAngle={70}
+                        endAngle={450}
+                        padAngle={1}
+                        style={{ 
+                            labels: { fill: "white" },
+                        }}
+
+                    />
                 </VictoryChart>
             </div>
     	);
