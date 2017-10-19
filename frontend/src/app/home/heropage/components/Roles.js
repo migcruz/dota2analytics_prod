@@ -15,25 +15,15 @@ class Roles extends React.Component {
         this.primary_attr = this.props.primary_attr
 
         if (this.primary_attr == "agi"){
-            this.colors = {
-                "origin": "limegreen",
-                "gradient": ["#d8f823", "#93f724", "lime"]
-            }
+            this.colors = ["limegreen", "mediumspringgreen", "#1cff60", "lime"];
         }
         else if (this.primary_attr == "int"){
-            this.colors = {
-                "origin": "royalblue",
-                "gradient": ["cyan", "#1cc0ff", "#1c43ff"]
-            }
+            this.colors = ["royalblue", "cyan", "#1cc0ff", "#1c43ff"];
         }
         else {
-            this.colors = {
-                "origin": "crimson",
-                "gradient": ["gold", "orange", "orangered"]
-            }
+            this.colors = ["crimson", "gold", "orange", "orangered"];
         }
         
-
         this.role_data1 = [
             { x: 0, y: 0},
             { x: 40, y: 0},
@@ -117,7 +107,22 @@ class Roles extends React.Component {
                     data={this.role_data_dummy}
                 />
                 <VictoryStack
-                    colorScale={this.colors["gradient"]}>
+                    colorScale={this.colors}>
+                    <VictoryBar
+                        domainPadding={{ y: 40 }}
+                        style={{ data: { width: 50} }}
+                        data={[
+                        { x: 0, y: 0.5 },
+                            { x: 40, y: 0.5 },
+                            { x: 80, y: 0.5 },
+                            { x: 120, y: 0.5 },
+                            { x: 160, y: 0.5 },
+                            { x: 200, y: 0.5 },
+                            { x: 240, y: 0.5 },
+                            { x: 280, y: 0.5 },
+                            { x: 320, y: 0.5 }
+                        ]}
+                    />
                     <VictoryBar
                         style={{ data: {width: 42 } }}
                         domainPadding={{ y: 7.5 }}
@@ -134,20 +139,6 @@ class Roles extends React.Component {
                     />
                     
                 </VictoryStack>
-                <VictoryBar
-                    style={{ data: { fill: this.colors["origin"], width: 50 } }}
-                    data={[
-                        { x: 0, y: 0.5 },
-                        { x: 40, y: 0.5 },
-                        { x: 80, y: 0.5 },
-                        { x: 120, y: 0.5 },
-                        { x: 160, y: 0.5 },
-                        { x: 200, y: 0.5 },
-                        { x: 240, y: 0.5 },
-                        { x: 280, y: 0.5 },
-                        { x: 320, y: 0.5 }
-                    ]}
-                />
                 <VictoryPolarAxis dependentAxis
                     tickValues={[2, 3, 4]}
                     style={{ 
@@ -159,7 +150,7 @@ class Roles extends React.Component {
                 />
                 <VictoryPie
                     colorScale={[
-                        this.colors["origin"]
+                        this.colors[0]
                     ]}
                     data={[
                         { x: "Carry", y: 1 },
@@ -178,7 +169,7 @@ class Roles extends React.Component {
                     padAngle={1}
                     style={{ 
                         labels: { fill: "white" },
-                        data: {stroke: this.colors["origin"], strokeWidth: 1}
+                        data: {stroke: this.colors[0], strokeWidth: 1}
                     }}
 
                 />
