@@ -153,7 +153,7 @@ class HeroPage extends React.Component {
             comp = <Abilities skills={this.hero_json["abilities"]}/>
             comp = null;
             roles = _.keys(this.hero_json["roles"]).join(" ");
-            hero_roles = <Roles roles={this.hero_json["roles"]}/>
+            hero_roles = <Roles roles={this.hero_json["roles"]} primary_attr={this.hero_json["primary_attr"]}/>
             
         }
         else {

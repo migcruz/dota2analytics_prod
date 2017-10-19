@@ -12,6 +12,27 @@ class Roles extends React.Component {
     constructor(props) {
         super(props);
         this.roles = this.props.roles;
+        this.primary_attr = this.props.primary_attr
+
+        if (this.primary_attr == "agi"){
+            this.colors = {
+                "origin": "limegreen",
+                "gradient": ["#d8f823", "#93f724", "lime"]
+            }
+        }
+        else if (this.primary_attr == "int"){
+            this.colors = {
+                "origin": "royalblue",
+                "gradient": ["cyan", "#1cc0ff", "#1c43ff"]
+            }
+        }
+        else {
+            this.colors = {
+                "origin": "crimson",
+                "gradient": ["gold", "orange", "orangered"]
+            }
+        }
+        
 
         this.role_data1 = [
             { x: 0, y: 0},
@@ -81,103 +102,87 @@ class Roles extends React.Component {
                 }
             }
         }
+
+
     }
 
   	render() {
     	return (
-            <div>
-                <svg>
-                    <defs>
-                        <linearGradient id="gradient1" 
-                            x1="0%" y1="0%" x2="0%" y2="100%"
-                        >
-                            <stop offset="0%"   stopColor="orange"/>
-                            <stop offset="100%" stopColor="red"/>
-                        </linearGradient>
-
-                    </defs>
-                </svg>
-                <VictoryChart polar theme={VictoryTheme.material} domainPadding={{ y: 10 }}
-                    innerRadius={20}
-                >
-                            
+            <VictoryChart polar theme={VictoryTheme.material} domainPadding={{ y: 10 }}
+                innerRadius={20}
+            >
+                        
+                <VictoryBar
+                    style={{ data: { fill: "none", width: 40 } }}
+                    data={this.role_data_dummy}
+                />
+                <VictoryStack
+                    colorScale={this.colors["gradient"]}>
                     <VictoryBar
-                        style={{ data: { fill: "none", width: 40 } }}
-                        data={this.role_data_dummy}
+                        style={{ data: {width: 42 } }}
+                        domainPadding={{ y: 7.5 }}
+                        data={this.role_data1}
                     />
-                    <VictoryStack
-                        colorScale={[
-                            "gold",
-                            "orange",
-                            "tomato",
-                            "url(#gradient1)"
-                            ]}>
-                        <VictoryBar
-                            style={{
-                                data: {stroke: "transparent", strokeWidth: 1}
-                            }}
-                            data={this.role_data1}
-                        />
-                        <VictoryBar
-                            style={{
-                                data: {stroke: "transparent", strokeWidth: 1}
-                            }}
-                            data={this.role_data2}
-                        />
-                        <VictoryBar
-                            style={{
-                                data: {stroke: "transparent", strokeWidth: 1}
-                            }}
-                            data={this.role_data3}
-                        />
-                       
-                    </VictoryStack>
                     <VictoryBar
-                        style={{ data: { fill: "red" } }}
-                        data={[
-                            { x: 0, y: 0.5 },
-                            { x: 40, y: 0.5 },
-                            { x: 80, y: 0.5 },
-                            { x: 120, y: 0.5 },
-                            { x: 160, y: 0.5 },
-                            { x: 200, y: 0.5 },
-                            { x: 240, y: 0.5 },
-                            { x: 280, y: 0.5 },
-                            { x: 320, y: 0.5 }
-                        ]}
+                        style={{ data: {width: 42 } }}
+                        domainPadding={{ y: 3 }}
+                        data={this.role_data2}
                     />
-                    <VictoryPolarAxis dependentAxis
-                        tickValues={[2, 3, 4]}
-                        style={{ 
-                            tickLabels: { fill: "none" },
-                            axis: { stroke: "none", strokeWidth: 0.5},
-                            grid: { stroke: "none", strokeWidth: 0.2, opacity: 1, strokeDasharray: "5,0" },
-                            axisLabel: {fill: "black"}
-                        }}
+                    <VictoryBar
+                        style={{ data: {width: 42 } }}
+                        data={this.role_data3}
                     />
-                    <VictoryPie
-                        data={[
-                            { x: "Carry", y: 1 },
-                            { x: "Escape", y: 1 },
-                            { x: "Pusher", y: 1 },
-                            { x: "Jungler", y: 1 },
-                            { x: "Disabler", y: 1 },
-                            { x: "Support", y: 1 },
-                            { x: "Initiator", y: 1 },
-                            { x: "Nuker", y: 1 },
-                            { x: "Durable", y: 1 }
-                        ]}
-                        innerRadius={120}
-                        startAngle={70}
-                        endAngle={450}
-                        padAngle={1}
-                        style={{ 
-                            labels: { fill: "white" },
-                        }}
+                    
+                </VictoryStack>
+                <VictoryBar
+                    style={{ data: { fill: this.colors["origin"], width: 50 } }}
+                    data={[
+                        { x: 0, y: 0.5 },
+                        { x: 40, y: 0.5 },
+                        { x: 80, y: 0.5 },
+                        { x: 120, y: 0.5 },
+                        { x: 160, y: 0.5 },
+                        { x: 200, y: 0.5 },
+                        { x: 240, y: 0.5 },
+                        { x: 280, y: 0.5 },
+                        { x: 320, y: 0.5 }
+                    ]}
+                />
+                <VictoryPolarAxis dependentAxis
+                    tickValues={[2, 3, 4]}
+                    style={{ 
+                        tickLabels: { fill: "none" },
+                        axis: { stroke: "none", strokeWidth: 0.5},
+                        grid: { stroke: "none", strokeWidth: 0.2, opacity: 1, strokeDasharray: "5,0" },
+                        axisLabel: {fill: "black"}
+                    }}
+                />
+                <VictoryPie
+                    colorScale={[
+                        this.colors["origin"]
+                    ]}
+                    data={[
+                        { x: "Carry", y: 1 },
+                        { x: "Durable", y: 1 },
+                        { x: "Nuker", y: 1 },
+                        { x: "Initiator", y: 1 },
+                        { x: "Support", y: 1 },
+                        { x: "Disabler", y: 1 },
+                        { x: "Jungler", y: 1 },
+                        { x: "Pusher", y: 1 },
+                        { x: "Escape", y: 1 }
+                    ]}
+                    innerRadius={120}
+                    startAngle={70}
+                    endAngle={450}
+                    padAngle={1}
+                    style={{ 
+                        labels: { fill: "white" },
+                        data: {stroke: this.colors["origin"], strokeWidth: 1}
+                    }}
 
-                    />
-                </VictoryChart>
-            </div>
+                />
+            </VictoryChart>
     	);
  	}
 }
