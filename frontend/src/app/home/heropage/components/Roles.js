@@ -21,7 +21,7 @@ class Roles extends React.Component {
             this.colors = ["royalblue", "cyan", "#1cc0ff", "#1c43ff"];
         }
         else {
-            this.colors = ["crimson", "gold", "orange", "orangered"];
+            this.colors = ["crimson", "gold", "darkorange", "orangered"];
         }
         
         this.role_data1 = [
