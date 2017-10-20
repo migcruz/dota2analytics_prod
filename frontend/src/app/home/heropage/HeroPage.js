@@ -193,7 +193,7 @@ class HeroPage extends React.Component {
                 </div>
                 <div className={`HeroPage-strip_${this.hero_json["primary_attr"]}`}/>                 
                 <h1> LMAO </h1>
-                <div style={{width: '400px'}}>
+                <div style={{width: '400px', margin: '10px auto 0'}}>
                     {hero_roles}
                 </div>
             </div> 
