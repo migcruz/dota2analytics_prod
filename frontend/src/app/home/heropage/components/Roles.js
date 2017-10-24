@@ -20,11 +20,11 @@ class Roles extends React.Component {
         }
         else if (this.primary_attr == "int"){
             this.primary_attr_icon = `${staticRoot}dota2assets/img/intelligence.png`;
-            this.colors = ["royalblue", "cyan", "#1cc0ff", "#1c43ff"];
+            this.colors = ["royalblue", "cyan", "dodgerblue", "#1c43ff"];
         }
         else {
             this.primary_attr_icon = `${staticRoot}dota2assets/img/strength.png`;
-            this.colors = ["crimson", "orange", "orangered", "red"];
+            this.colors = ["crimson", "dakrorange", "orangered", "red"];
         }
         
         this.role_data1 = [
@@ -64,7 +64,7 @@ class Roles extends React.Component {
         ];
 
         {/* so that the chart has a range up to 3 even if hero roles only has a max of "2", use 4
-            because 1 role level means y = 2 therefore 2 + 1 + 1 = 4 */}
+            because 1 role level means y = 2 therefore 2 + 1 + 1 = 4  #1cc0ff*/}
         this.role_data_dummy = [
             { x: 0, y: 4 },
             { x: 40, y: 4 },
