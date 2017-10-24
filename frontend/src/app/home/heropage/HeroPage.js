@@ -143,6 +143,7 @@ class HeroPage extends React.Component {
     }
     
     componentDidMount() {
+        window.scrollTo(0, 0);
         axios.get(`http://127.0.0.1:8000/api/heroes/${this.hero_id}/?format=json`)
           .then(res => {
             this.hero_json = res.data;
