@@ -13,8 +13,8 @@ class HomeNavbar extends React.Component {
     	return (
 			<Menu fixed={'top'} inverted>
 		        <Menu.Item
-		          	name='editorials'
-		          	active={activeItem === 'editorials'}
+		          	name='Home'
+		          	active={activeItem === 'Home'}
 		          	onClick={this.handleItemClick}
 		          	as={NavLink}
 		          	to="/app"
@@ -23,8 +23,8 @@ class HomeNavbar extends React.Component {
 		        </Menu.Item>
 
 		        <Menu.Item
-		          	name='reviews'
-		          	active={activeItem === 'reviews'}
+		          	name='Kek'
+		          	active={activeItem === 'Kek'}
 		          	onClick={this.handleItemClick}
 		          	as={NavLink}
 		          	to="/app/kek"
@@ -33,8 +33,8 @@ class HomeNavbar extends React.Component {
 		        </Menu.Item>
 
 		        <Menu.Item
-		          	name='upcomingEvents'
-		          	active={activeItem === 'upcomingEvents'}
+		          	name='Lol'
+		          	active={activeItem === 'Lol'}
 		          	onClick={this.handleItemClick}
 		          	as={NavLink}
 		          	to="/app/lol"

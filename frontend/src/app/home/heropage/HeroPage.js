@@ -3,6 +3,8 @@ import { Image, Item, Grid } from "semantic-ui-react";
 import Attributes from './components/Attributes';
 import Abilities from './components/Abilities';
 import Roles from './components/Roles';
+import LeftMenu from './components/LeftMenu';
+import RightMenu from './components/RightMenu';
 import axios from 'axios';
 
 const health_per_str = 20;
@@ -130,11 +132,14 @@ class HeroPage extends React.Component {
 
 	constructor(props) {
         super(props);
-        this.state = {fetched: false};
+        this.state = {fetched: false, leftActiveItem: 'Foo', rightActiveItem: 'Rofl'};
         this.hero_url = this.props.match.params.hero;
         this.portrait_path = hero_portrait_paths[this.hero_url][1];
         this.hero_id = hero_portrait_paths[this.hero_url][0];
         this.hero_json = {};
+
+        this.handleLeftItemClick = (e, { name }) => this.setState({ leftActiveItem: name }) ;
+        this.handleRightItemClick = (e, { name }) => this.setState({ rightActiveItem: name }) ;
     }
     
     componentDidMount() {
@@ -151,6 +156,7 @@ class HeroPage extends React.Component {
         var roles;
         if (this.state.fetched){
             comp = <Abilities skills={this.hero_json["abilities"]}/>
+            comp = null;
             roles = _.keys(this.hero_json["roles"]).join(" ");
             hero_roles = <Roles roles={this.hero_json["roles"]} primary_attr={this.hero_json["primary_attr"]}/>
             
@@ -160,35 +166,60 @@ class HeroPage extends React.Component {
             comp = null;
             roles = null;
         }
+
+        const { leftActiveItem } = this.state;
+        const { rightActiveItem } = this.state;
+        console.log(leftActiveItem);
         return (
             <div style={{paddingTop: '40px'}}>
                 <div className="HeroPage-header">
-                    <div style={{textAlign: 'center'}}>
-                        <h1>{this.hero_json["localized_name"]}</h1>
-                        <h4>{roles}</h4>
-                        <video autoPlay loop preload>
-                            <source src={this.portrait_path} type="video/webm"/>
-                        </video>
-                        <div style={{paddingTop: '10px'}}>
-                            <div className="HeroPage-health_bar">
-                                <h5>{`${this.hero_json["base_health"]+(health_per_str*this.hero_json["base_str"])}`}</h5>
-                            </div>
-                            <div className="HeroPage-mana_bar">
-                                <h5>{`${this.hero_json["base_mana"]+(mana_per_int*this.hero_json["base_int"])}`}</h5>
-                            </div>
-                        </div>
-                        <div style={{width: '234px', margin: '10px auto 0'}}>
-                            <Attributes
-                                str={`${this.hero_json["base_str"]} + ${parseFloat(this.hero_json["str_gain"]).toFixed(2).toString()}`} 
-                                agi={`${this.hero_json["base_agi"]} + ${parseFloat(this.hero_json["agi_gain"]).toFixed(2).toString()}`}
-                                int={`${this.hero_json["base_int"]} + ${parseFloat(this.hero_json["int_gain"]).toFixed(2).toString()}`}
-                                />
-                        </div>
-                        <div className="HeroPage-abilities">
-                            {comp}
-                        </div>
-                    </div>
-                    
+                    <Grid>
+                        <Grid.Row columns={3} key="view_row" centered>
+                            <Grid.Column key="left_view">
+                                <LeftMenu handleItemClick={this.handleLeftItemClick} activeItem={leftActiveItem}/>
+                                { this.state.leftActiveItem === 'Foo' &&
+                                    <div style={{width: '400px', margin: '10px auto 0'}}>
+                                        {hero_roles}
+                                    </div>
+                                }
+                            </Grid.Column>
+                            <Grid.Column key="mid_view">
+                                <div style={{textAlign: 'center'}}>
+                                    <h1>{this.hero_json["localized_name"]}</h1>
+                                        <h4>{roles}</h4>
+                                        {/*<video autoPlay loop preload>
+                                            <source src={this.portrait_path} type="video/webm"/>
+                                        </video>*/}
+                                        <div style={{paddingTop: '10px'}}>
+                                        <div className="HeroPage-health_bar">
+                                            <h5>{`${this.hero_json["base_health"]+(health_per_str*this.hero_json["base_str"])}`}</h5>
+                                        </div>
+                                        <div className="HeroPage-mana_bar">
+                                            <h5>{`${this.hero_json["base_mana"]+(mana_per_int*this.hero_json["base_int"])}`}</h5>
+                                        </div>
+                                    </div>
+                                    <div style={{width: '234px', margin: '10px auto 0'}}>
+                                        <Attributes
+                                            str={`${this.hero_json["base_str"]} + ${parseFloat(this.hero_json["str_gain"]).toFixed(2).toString()}`} 
+                                            agi={`${this.hero_json["base_agi"]} + ${parseFloat(this.hero_json["agi_gain"]).toFixed(2).toString()}`}
+                                            int={`${this.hero_json["base_int"]} + ${parseFloat(this.hero_json["int_gain"]).toFixed(2).toString()}`}
+                                            />
+                                    </div>
+                                    <div className="HeroPage-abilities">
+                                        {comp}
+                                    </div>
+                                </div>
+                            </Grid.Column>
+                            <Grid.Column key="right_view">
+                                <RightMenu handleItemClick={this.handleRightItemClick} activeItem={rightActiveItem}/>
+                                { this.state.rightActiveItem === 'Rofl' &&
+                                    <div style={{width: '400px', margin: '10px auto 0'}}>
+                                        {hero_roles}
+                                    </div>
+                                }
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid>
                 </div>
                 <div className={`HeroPage-strip_${this.hero_json["primary_attr"]}`}/>                 
                 <h1> LMAO </h1>
@@ -213,44 +244,30 @@ export default HeroPage;
 
 
 
-{/*<Embed
-    				url={`${staticRoot}dota2assets/npc_dota_hero_queenofpain.webm`}
-                  />
-            
-    https://stackoverflow.com/questions/40351997/async-image-load-with-react-and-redux 
-    
-    <List>
-                            <List.Item>
-                                <Image avatar src={`${staticRoot}dota2assets/img/strength.png`} />
-                                <List.Content verticalAlign='middle'>
-                                    <List.Header as='h5'>
-                                        {`${this.state.hero_json["base_str"]} + ${this.state.hero_json["str_gain"]}`}
-                                    </List.Header>
-                                </List.Content>
-                            </List.Item>
-                            <List.Item>
-                                <Image avatar src={`${staticRoot}dota2assets/img/strength.png`} />
-                                <List.Content verticalAlign='middle'>
-                                    <List.Header as='h5'>
-                                        {`${this.state.hero_json["base_str"]} + ${this.state.hero_json["str_gain"]}`}
-                                    </List.Header>
-                                </List.Content>
-                            </List.Item>
-                            <List.Item>
-                                <Image avatar src={`${staticRoot}dota2assets/img/strength.png`} />
-                                <List.Content verticalAlign='middle'>
-                                    <List.Header as='h5'>
-                                        {`${this.state.hero_json["base_str"]} + ${this.state.hero_json["str_gain"]}`}
-                                    </List.Header>
-                                </List.Content>
-                            </List.Item>
-                        </List>
-                
-                
+{/*
 
-                how to centercomponent (nah jsut use grid from heroes and put an aritrary (15) number of columns)
-                <div style={{position: 'relative', float: 'right', left: '-50%'}}>
-                    <div style={{position: 'relative', left: '50%'}}>
+                <div style={{textAlign: 'center'}}>
+                        <h1>{this.hero_json["localized_name"]}</h1>
+                        <h4>{roles}</h4>
+                        <video autoPlay loop preload>
+                            <source src={this.portrait_path} type="video/webm"/>
+                        </video
+                        <div style={{paddingTop: '10px'}}>
+                        <div className="HeroPage-health_bar">
+                            <h5>{`${this.hero_json["base_health"]+(health_per_str*this.hero_json["base_str"])}`}</h5>
+                        </div>
+                        <div className="HeroPage-mana_bar">
+                            <h5>{`${this.hero_json["base_mana"]+(mana_per_int*this.hero_json["base_int"])}`}</h5>
+                        </div>
+                    </div>
+                    <div style={{width: '234px', margin: '10px auto 0'}}>
+                        <Attributes
+                            str={`${this.hero_json["base_str"]} + ${parseFloat(this.hero_json["str_gain"]).toFixed(2).toString()}`} 
+                            agi={`${this.hero_json["base_agi"]} + ${parseFloat(this.hero_json["agi_gain"]).toFixed(2).toString()}`}
+                            int={`${this.hero_json["base_int"]} + ${parseFloat(this.hero_json["int_gain"]).toFixed(2).toString()}`}
+                            />
+                    </div>
+                    <div className="HeroPage-abilities">
                         {comp}
                     </div>
                 </div>

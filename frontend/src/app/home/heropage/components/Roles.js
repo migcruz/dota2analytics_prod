@@ -103,11 +103,11 @@ class Roles extends React.Component {
   	render() {
     	return (
             <div>
-                <svg>
+                <svg height="0">
                     <defs>
-                    <pattern id="img1" patternUnits="userSpaceOnUse" width="60" height="60">
-                        <image xlinkHref={this.primary_attr_icon} x="0" y="0" width="60" height="60" />
-                    </pattern>
+                        <pattern id="img1" patternUnits="userSpaceOnUse" width="60" height="60">
+                            <image xlinkHref={this.primary_attr_icon} x="0" y="0" width="60" height="60" />
+                        </pattern>
 
                     </defs>
                 </svg>
