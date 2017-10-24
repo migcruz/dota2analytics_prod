@@ -156,7 +156,6 @@ class HeroPage extends React.Component {
         var roles;
         if (this.state.fetched){
             comp = <Abilities skills={this.hero_json["abilities"]}/>
-            comp = null;
             roles = _.keys(this.hero_json["roles"]).join(" ");
             hero_roles = <Roles roles={this.hero_json["roles"]} primary_attr={this.hero_json["primary_attr"]}/>
             
@@ -187,9 +186,9 @@ class HeroPage extends React.Component {
                                 <div style={{textAlign: 'center'}}>
                                     <h1>{this.hero_json["localized_name"]}</h1>
                                         <h4>{roles}</h4>
-                                        {/*<video autoPlay loop preload>
+                                        <video autoPlay loop preload>
                                             <source src={this.portrait_path} type="video/webm"/>
-                                        </video>*/}
+                                        </video>
                                         <div style={{paddingTop: '10px'}}>
                                         <div className="HeroPage-health_bar">
                                             <h5>{`${this.hero_json["base_health"]+(health_per_str*this.hero_json["base_str"])}`}</h5>
@@ -205,9 +204,6 @@ class HeroPage extends React.Component {
                                             int={`${this.hero_json["base_int"]} + ${parseFloat(this.hero_json["int_gain"]).toFixed(2).toString()}`}
                                             />
                                     </div>
-                                    <div className="HeroPage-abilities">
-                                        {comp}
-                                    </div>
                                 </div>
                             </Grid.Column>
                             <Grid.Column key="right_view">
@@ -220,6 +216,9 @@ class HeroPage extends React.Component {
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>
+                    <div className="HeroPage-abilities">
+                        {comp}
+                    </div>
                 </div>
                 <div className={`HeroPage-strip_${this.hero_json["primary_attr"]}`}/>                 
                 <h1> LMAO </h1>

@@ -24,7 +24,7 @@ class Roles extends React.Component {
         }
         else {
             this.primary_attr_icon = `${staticRoot}dota2assets/img/strength.png`;
-            this.colors = ["crimson", "dakrorange", "orangered", "red"];
+            this.colors = ["crimson", "darkorange", "orangered", "red"];
         }
         
         this.role_data1 = [
