@@ -60,8 +60,12 @@ module.exports = {
             },
             {
                 // move images found within CSS to the build directory
-                test: /\.(jpg|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                test: /\.(jpg|ttf|eot|svg|png|webm)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
                 loader: "file?name=[path][name].[ext]?[hash]&context=./node_modules"
+            },
+	    {
+                test: /\.json$/,
+                loader: "json-loader" 
             }
         ]
     }
