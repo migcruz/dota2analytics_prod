@@ -12,6 +12,8 @@ from django.contrib.postgres.fields import JSONField, ArrayField
 # This will tidy up your migrations without making other database changes.
 # Then change something in model like a default > makemigrations>migrate then revert change and makeigrations>migrate again
 
+
+#To NUKE DB: sudo su postgres > psql > DROP DATABASE <dbname> (allcaps) > recreate db that you want and start over
 class Hero(models.Model):
 	hero_id = models.IntegerField(default=0)
 	name = models.CharField(max_length=50, default="")

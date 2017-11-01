@@ -63,22 +63,22 @@ from heroes.models import Hero, Ability
 
 
 ######## Abilities ######
-x = 0
-with open('drf_hero_abilities.json') as filepath:
- 	drf_hero_abilities = json.load(filepath, object_pairs_hook=OrderedDict)
+# x = 0
+# with open('drf_hero_abilities.json') as filepath:
+#  	drf_hero_abilities = json.load(filepath, object_pairs_hook=OrderedDict)
 
-heros = Hero.objects.all()
-for hero in heros:
-    for key, val in drf_hero_abilities.iteritems():
-        if hero.hero_id == val["hero_id"]:
-            p = Ability.objects.create(
-                created_order = x,
-                hero = hero,
-                ability_name = val["ability_name"],
-                heroid = val["hero_id"],
-                ability_info = val["ability_info"]
-            )
-            x += 1
+# heros = Hero.objects.all()
+# for hero in heros:
+#     for key, val in drf_hero_abilities.iteritems():
+#         if hero.hero_id == val["hero_id"]:
+#             p = Ability.objects.create(
+#                 created_order = x,
+#                 hero = hero,
+#                 ability_name = val["ability_name"],
+#                 heroid = val["hero_id"],
+#                 ability_info = val["ability_info"]
+#             )
+#             x += 1
 
 # abilities = Ability.objects.all()
 # print abilities[0].ability_info

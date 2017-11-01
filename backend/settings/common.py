@@ -34,6 +34,7 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 MIDDLEWARE_CLASSES = [
     "django.middleware.security.SecurityMiddleware",
+    # "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -88,10 +89,11 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-STATIC_URL = "/static/"
+STATIC_URL = "/production/" #"/static/"
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'production')
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, "static"), #static
 ]
 
 LOGIN_REDIRECT_URL = reverse_lazy("app")
@@ -120,3 +122,4 @@ REST_FRAMEWORK = {
 }
 
 AUTH_USER_MODEL = 'users.EmailUser'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

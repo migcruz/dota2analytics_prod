@@ -1,0 +1,13 @@
+{
+  "name": "dota2_app",
+  "version": "0.0.1",
+  "description": "Dota2 WebApp Project",
+  "engines": {
+    "node": "6.11.1"
+  },	
+  "scripts": {
+    "postinstall": "cd frontend && npm install",
+  },
+  "author": "Miguel Cruz",
+  "license": "MIT",
+}
