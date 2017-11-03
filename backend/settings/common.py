@@ -9,7 +9,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 path.append(join(BASE_DIR, 'apps'))
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*'] #for heroku
+#ALLOWED_HOSTS = []
 
 DJANGO_APPS = [
     "django.contrib.admin",
@@ -89,9 +90,9 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-STATIC_URL = "/production/" #"/static/"
+STATIC_URL = "/static/" #"/static/"
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'production')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"), #static
 ]
@@ -122,4 +123,4 @@ REST_FRAMEWORK = {
 }
 
 AUTH_USER_MODEL = 'users.EmailUser'
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage' # need this for heroku local and maybe heroku in general
