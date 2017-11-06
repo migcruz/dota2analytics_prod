@@ -25,3 +25,8 @@ INSTALLED_APPS += (
 STATICFILES_DIRS.append(
     os.path.join(BASE_DIR, os.pardir, 'frontend', 'build'),
 )
+
+# Update database configuration with $DATABASE_URL.
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500) #
+DATABASES['default'].update(db_from_env) #
