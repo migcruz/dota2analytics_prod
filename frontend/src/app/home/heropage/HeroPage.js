@@ -157,7 +157,6 @@ class HeroPage extends React.Component {
         var roles;
         if (this.state.fetched){
             comp = <Abilities skills={this.hero_json["abilities"]}/>
-            comp = null;
             roles = _.keys(this.hero_json["roles"]).join(" ");
             hero_roles = <Roles roles={this.hero_json["roles"]} primary_attr={this.hero_json["primary_attr"]}/>
             
@@ -188,9 +187,9 @@ class HeroPage extends React.Component {
                                 <div style={{textAlign: 'center'}}>
                                     <h1>{this.hero_json["localized_name"]}</h1>
                                         <h4>{roles}</h4>
-                                        {/*<video autoPlay loop preload>
+                                        <video autoPlay loop preload>
                                             <source src={this.portrait_path} type="video/webm"/>
-                                        </video>*/}
+                                        </video>
                                         <div style={{paddingTop: '10px'}}>
                                         <div className="HeroPage-health_bar">
                                             <h5>{`${this.hero_json["base_health"]+(health_per_str*this.hero_json["base_str"])}`}</h5>
