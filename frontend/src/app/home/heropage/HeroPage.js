@@ -144,7 +144,7 @@ class HeroPage extends React.Component {
     
     componentDidMount() {
         window.scrollTo(0, 0);
-        axios.get(`http://127.0.0.1:8000/api/heroes/${this.hero_id}/?format=json`)
+        axios.get(`https://mysterious-hamlet-77399.herokuapp.com/api/heroes/${this.hero_id}/?format=json`)
           .then(res => {
             this.hero_json = res.data;
             this.setState({fetched: true});
@@ -277,4 +277,8 @@ export default HeroPage;
                 https://webbridgestudios.com/how-to-create-a-css-noise-background-with-a-gradient/
                 http://webdesignerwall.com/tutorials/css3-image-styles
 
+
+
+
+                http://127.0.0.1:8000/api/heroes/${this.hero_id}/?format=json
                     */}
