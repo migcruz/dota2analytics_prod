@@ -18,9 +18,9 @@ from heroes.models import Hero, Ability
 #     print hero
 
 # with open('drf_heroes.json') as filepath:
-#  	heroes_json = json.load(filepath, object_pairs_hook=OrderedDict)
+#  	heroes_json = json.load(filepath)
 
-# for key, val in heroes_json.iteritems():
+# for key, val in heroes_json.items():
 #     p = Hero.objects.create(
 #         hero_id = val["id"],
 #         name = val["name"],
@@ -59,29 +59,29 @@ from heroes.models import Hero, Ability
 
 # heroes = Hero.objects.all().delete()
 # heros = Hero.objects.all()
-# print heros, len(heros)
+# print(heros, len(heros))
 
 
 ######## Abilities ######
-# x = 0
-# with open('drf_hero_abilities.json') as filepath:
-#  	drf_hero_abilities = json.load(filepath, object_pairs_hook=OrderedDict)
+x = 0
+with open('drf_hero_abilities.json') as filepath:
+ 	drf_hero_abilities = json.load(filepath)
 
-# heros = Hero.objects.all()
-# for hero in heros:
-#     for key, val in drf_hero_abilities.iteritems():
-#         if hero.hero_id == val["hero_id"]:
-#             p = Ability.objects.create(
-#                 created_order = x,
-#                 hero = hero,
-#                 ability_name = val["ability_name"],
-#                 heroid = val["hero_id"],
-#                 ability_info = val["ability_info"]
-#             )
-#             x += 1
+heros = Hero.objects.all()
+for hero in heros:
+    for key, val in drf_hero_abilities.items():
+        if hero.hero_id == val["hero_id"]:
+            p = Ability.objects.create(
+                created_order = x,
+                hero = hero,
+                ability_name = val["ability_name"],
+                heroid = val["hero_id"],
+                ability_info = val["ability_info"]
+            )
+            x += 1
 
 # abilities = Ability.objects.all()
-# print abilities[0].ability_info
+# print(abilities[0].ability_info)
 
 # abilities = Ability.objects.all().delete()
 
